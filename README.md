@@ -1,2 +1,2 @@
 # ajgriman.github.io
-Tu mercado locan en línea
+Tu mercado local en línea
