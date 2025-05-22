@@ -1,31 +1,78 @@
-<header class="container-fluid py-2 bg-light">
-  <div class="d-flex justify-content-between align-items-center">
-    <div>
-      <a href="{{ '/' | relative_url }}" class="h4 text-decoration-none text-dark">
-        {{ site.data.locales[site.active_lang].site_title | default: site.title }}
-      </a>
-    </div>
-    <nav>
-      <!-- Placeholder for main navigation items -->
-      <span class="me-3">Nav Item 1</span>
-      <span class="me-3">Nav Item 2</span>
+{%- comment -%}
+Assign locale data to a shorthand variable for easier access.
+This assumes your locale files are in _data/locales/ and named e.g., en.yml, es.yml
+And that site.active_lang is set by jekyll-polyglot (e.g., "en", "es")
+{%- endcomment -%}
+{%- assign t = site.data.locales[site.active_lang] -%}
 
-      <!-- Language Switcher -->
-      {% for lang_code in site.languages %}
-        {% if lang_code == site.active_lang %}
-          <strong class="me-2">{{ site.data.locales[lang_code].lang_name | default: lang_code | upcase }}</strong>
-        {% else %}
-          {% if lang_code == site.default_lang %}
-            <a href="{{ page.url | replace: site.active_lang_path, '' | relative_url }}" class="me-2">
-              {{ site.data.locales[lang_code].lang_name | default: lang_code | upcase }}
-            </a>
-          {% else %}
-            <a href="{{ lang_code | prepend: '/' | append: page.url | relative_url }}" class="me-2">
-              {{ site.data.locales[lang_code].lang_name | default: lang_code | upcase }}
-            </a>
-          {% endif %}
-        {% endif %}
-      {% endfor %}
-    </nav>
-  </div>
-</header>
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ '/' | relative_url }}">{{ t.site_title | default: site.title }}</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ '/' | relative_url }}">{{ t.navbar_home |
+                        default: "Home" }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">{{ t.navbar_projects | default: "Projects" }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">{{ t.navbar_about | default: "About" }}</a>
+                </li>
+                <!-- Example Dropdown
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{ t.navbar_more | default: "More" }}
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="#">{{ t.navbar_action | default: "Action" }}</a></li>
+            <li><a class="dropdown-item" href="#">{{ t.navbar_another_action | default: "Another action" }}</a></li>
+          </ul>
+        </li>
+        -->
+            </ul>
+            <!-- Language Switcher aligned to the right -->
+            <ul class="navbar-nav">
+                {% for lang_code in site.languages %}
+                {% if lang_code == site.active_lang %}
+                <li class="nav-item">
+                    <span class="nav-link active"><strong>{{ site.data.locales[lang_code].lang_name | default: lang_code
+                            | upcase }}</strong></span>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    {%- assign target_url_parts = page.url | split: '/' -%}
+                    {%- if site.active_lang == site.default_lang and target_url_parts[1] == site.active_lang -%}
+                    {%- comment -%} Current page is like /en/somepage and we are switching to non-default from default
+                    -%{%- endcomment -%}
+                    {%- assign current_path_without_lang = page.url | remove_first: site.active_lang_path -%}
+                    {%- else -%}
+                    {%- comment -%} Handles default lang URLs like /somepage or non-default like /es/somepage -%{%-
+                    endcomment -%}
+                    {%- assign current_path_without_lang = page.url | remove_first: site.active_lang_path -%}
+                    {%- endif -%}
+
+                    {%- if lang_code == site.default_lang -%}
+                    {%- comment -%} Switching to default language, URL should not have lang prefix -%{%- endcomment -%}
+                    <a class="nav-link" href="{{ current_path_without_lang | relative_url }}">
+                        {{ site.data.locales[lang_code].lang_name | default: lang_code | upcase }}
+                    </a>
+                    {%- else -%}
+                    {%- comment -%} Switching to non-default language, URL should have lang prefix -%{%- endcomment -%}
+                    <a class="nav-link"
+                        href="{{ lang_code | prepend: '/' | append: current_path_without_lang | relative_url }}">
+                        {{ site.data.locales[lang_code].lang_name | default: lang_code | upcase }}
+                    </a>
+                    {%- endif -%}
+                </li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</nav>
