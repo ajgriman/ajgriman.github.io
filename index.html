@@ -1,0 +1,9 @@
+---
+layout: default
+title: Home <!-- This will be overridden by homepage_title from locales if defined -->
+permalink: / # Ensures this is the root for the default language
+---
+<div class="p-3">
+  <h1>{{ site.data.locales[site.active_lang].homepage_title }}</h1>
+  <p>This is the English homepage content.</p>
+</div>
