@@ -1,4 +1,100 @@
-// Start with an empty file or very basic body style if needed
-// body {
-//   font-family: sans-serif; // Bootstrap handles this mostly
-// }
+---
+---
+
+// --- Variables ---
+// Fonts
+$card-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; // Clean sans-serif stack
+
+// Colors
+$card-background-color: #fff;
+$card-title-color: #333333; // Dark gray / near black
+$card-description-color: #555555; // Medium gray
+$card-image-hover-shadow-color: rgba(0, 0, 0, 0.25); // For the shadow
+$card-delimiter-color: #504f4e89; // Orange (adjust if it's a different shade from image)
+
+// Spacing & Sizing (these are estimates, adjust to match visuals precisely)
+$card-overall-padding: 15px; // Approx. space of the "green area" around content
+$card-title-font-size: 1.75rem;
+$card-title-margin-bottom: 15px; // Space below title, before image
+
+$card-image-margin-bottom: 15px; // Space below image, before description
+
+$card-description-font-size: 1rem;
+$card-description-line-height: 1.6;
+$card-description-margin-bottom: 20px; // Space below description, before delimiter
+
+$card-delimiter-height: 0.5px; // Thickness of the orange line
+
+// Effects
+$card-image-hover-shadow: 0 8px 20px $card-image-hover-shadow-color; // Stronger shadow
+
+// --- Custom Project Card Styles ---
+.custom-project-card {
+  background-color: $card-background-color;
+  padding: $card-overall-padding; // This is the "green area" padding
+  margin-bottom: 1px; // Space below each card in a grid
+  position: relative; // For the delimiter to be absolutely positioned if needed, or just for context
+  margin-bottom: 1px;
+  // The orange delimiter line at the bottom of the card itself
+  // This approach makes it part of the card's padding area.
+  // If the delimiter is outside the main padding, it needs different styling.
+  // For now, assuming it's within the card structure.
+  // Using an explicit div for the delimiter is more robust.
+  &__delimiter {
+    height: $card-delimiter-height;
+    background-color: $card-delimiter-color;
+    width: 100%; // Full width of the card's content area
+    // If card has padding, and delimiter should span full width of card including padding:
+    // position: absolute;
+    // bottom: 0;
+    // left: 0;
+    // width: 100%; 
+  }
+
+  &__title {
+    font-family: $card-font-family;
+    font-size: $card-title-font-size;
+    font-weight: bold;
+    color: $card-title-color;
+    margin-top: 0; // Remove default h3 margin if any
+    margin-bottom: $card-title-margin-bottom;
+    line-height: 1.3;
+    text-align: left;
+  }
+
+  &__image-container {
+    margin-bottom: $card-image-margin-bottom;
+    // No specific styling needed here unless for positioning/overflow
+  }
+  
+  &__image {
+    display: block;
+    width: 100%;
+    height: auto; // Respects aspect ratio
+    transition: box-shadow 0.3s ease;
+
+    &:hover {
+      box-shadow: $card-image-hover-shadow;
+    }
+  }
+
+  &__description {
+    font-family: $card-font-family;
+    font-size: $card-description-font-size;
+    color: $card-description-color;
+    line-height: $card-description-line-height;
+    margin-top: 0; // Remove default p margin if any
+    margin-bottom: $card-description-margin-bottom; // Space before the delimiter
+    text-align: left;
+  }
+}
+
+// --- Styles for Bootstrap Grid columns containing the cards ---
+// This ensures that cards within Bootstrap columns behave as expected
+// and that the card's background and delimiter work within the column's padding.
+.row > [class*="col-"] { // Targetting Bootstrap columns directly
+  .custom-project-card {
+    height: 100%; // If you want cards in a row to be same height (Bootstrap 5 card group behavior)
+                  // This might conflict with masonry if image heights vary a lot
+  }
+}

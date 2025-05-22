@@ -1,9 +1,63 @@
 ---
 layout: default
-title: Home <!-- This will be overridden by homepage_title from locales if defined -->
-permalink: / # Ensures this is the root for the default language
+title: Home
+permalink: /
 ---
-<div class="p-3">
-  <h1>{{ site.data.locales[site.active_lang].homepage_title }}</h1>
-  <p>This is the English homepage content.</p>
+{%- assign t = site.data.locales[site.active_lang] -%}
+
+<div class="container-fluid py-4">
+    <h1 class="mb-4 text-center">{{ t.homepage_title }}</h1>
+
+    <!-- Masonry Grid Container -->
+    <div class="row gx-4" id="project-grid">
+
+        <!-- Masonry Item: Card 1 -->
+        <div class="col-12 col-md-6 col-lg-4 project-grid-item mb-4"> <!-- Added project-grid-item and mb-4 -->
+            {% include project_card.html
+            project_image_url="https://milo.bootlab.io/img/articles/18.jpg"
+            project_title="Crying on the news"
+            project_description="Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper
+            libero."
+            %}
+        </div>
+
+        <!-- Masonry Item: Card 2 -->
+        <div class="col-12 col-md-6 col-lg-4 project-grid-item mb-4"> <!-- Added project-grid-item and mb-4 -->
+            {% include project_card.html
+            project_image_url="https://milo.bootlab.io/img/articles/3.jpg"
+            project_title="How can we sing about love?"
+            project_description="Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet
+            adipiscing sem neque sed ipsum."
+            %}
+        </div>
+
+        <!-- Masonry Item: Card 3 -->
+        <div class="col-12 col-md-6 col-lg-4 project-grid-item mb-4"> <!-- Added project-grid-item and mb-4 -->
+            {% include project_card.html
+            project_image_url="https://milo.bootlab.io/img/articles/5.jpg"
+            project_title="How can we, how can we sing about ourselves?"
+            project_description="Tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque
+            sed ipsum. Etiam rhoncus."
+            %}
+        </div>
+
+        <!-- Add more cards with the same "project-grid-item mb-4" classes -->
+        <div class="col-12 col-md-6 col-lg-4 project-grid-item mb-4">
+            {% include project_card.html
+            project_image_url="https://milo.bootlab.io/img/articles/22.jpg"
+            project_title="Another Project Example (Taller)"
+            project_description="Sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Etiam rhoncus.
+            Maecenas tempus, tellus eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua."
+            %}
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 project-grid-item mb-4">
+            {% include project_card.html
+            project_image_url="https://milo.bootlab.io/img/articles/1.jpg"
+            project_title="Shorter Card Example"
+            project_description="Lorem ipsum dolor."
+            %}
+        </div>
+
+    </div>
 </div>

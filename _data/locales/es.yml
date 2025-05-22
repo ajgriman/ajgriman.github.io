@@ -11,3 +11,7 @@ navbar_about: "Acerca de"
 # navbar_another_action: "Otra Acción"
 go_to_es: "Español"
 go_to_en: "English"
+
+# ... existing strings ...
+project_card_title_placeholder: "Título del Proyecto"
+project_card_description_placeholder: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum." # Placeholder, translate as needed
