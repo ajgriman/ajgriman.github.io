@@ -1,0 +1,65 @@
+---
+layout: default
+---
+<div class="container mt-4 mb-5">
+  <div class="row">
+    <div class="col-lg-8">
+      <article class="project-detail-main">
+
+        
+        {% if page.image_path %}
+        <div class="project-detail-image-container mb-4">
+          <img src="{{ page.image_path | relative_url }}" alt="{{ page.title }}" class="img-fluid project-detail-image">
+        </div>
+        {% elsif page.video_embed %}
+        <div class="project-detail-video-container mb-4 ratio ratio-16x9">
+          {{ page.video_embed }}
+        </div>
+        {% endif %}
+
+        
+        <h1 class="project-detail-title mb-3">{{ page.title }}</h1>
+
+        {# Project Content #}
+        <div class="project-detail-content user-content">
+          {{ content }}
+        </div>
+
+      </article>
+    </div>
+
+    <div class="col-lg-4">
+      <aside class="project-sidebar">
+
+        {% if page.tags and page.tags.size > 0 %}
+        <div class="sidebar-section mb-4">
+          <h3 class="sidebar-section-title">Tags</h3>
+          <ul class="list-unstyled"> {# Using list-unstyled for cleaner look initially #}
+            {% for tag in page.tags %}
+            <li class="d-inline-block me-1 mb-1"> {# For tag badges #}
+              <a href="#" class="badge bg-light text-dark project-tag">{{ tag }}</a> 
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+
+        <div class="sidebar-section mb-4">
+          <h3 class="sidebar-section-title">Other Projects</h3>
+          <p class="text-muted"><em>Other projects will be listed here.</em></p>
+          {#
+          <div class="sidebar-project-item d-flex mb-3">
+            <img src="/assets/images/placeholder-thumb.jpg" alt="Project thumbnail" class="me-2"
+              style="width: 60px; height: 60px; object-fit: cover;">
+            <div>
+              <a href="#" class="text-decoration-none">Another Project Title</a>
+              <small class="d-block text-muted">Brief detail or category</small>
+            </div>
+          </div>
+          #}
+        </div>
+
+      </aside>
+    </div>
+  </div>
+</div>

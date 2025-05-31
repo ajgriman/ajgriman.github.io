@@ -57,9 +57,15 @@ plugins:
 plugins:
   - jekyll-polyglot
   - jekyll-seo-tag
+
 languages: ["en", "es"]
 default_lang: "en"
-exclude_from_localization: ["assets/", "admin/"] # Add others if needed
-# polyglot: # (Optional alternative nesting for polyglot specific settings)
-#   default_lang: "en"
-#   languages: ["en", "es"]
+exclude_from_localization: ["assets/", "scripts/"] # Add "admin/" if you have it
+
+polyglot:
+  default_lang_in_url: false # KEY: /en/ will NOT be in default lang URLs
+  pages_mode: filename 
+collections:
+  projects:
+    output: true
+    permalink: /projects/:title/ 

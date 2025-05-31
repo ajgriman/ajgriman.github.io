@@ -98,3 +98,32 @@ $card-image-hover-shadow: 0 8px 20px $card-image-hover-shadow-color; // Stronger
                   // This might conflict with masonry if image heights vary a lot
   }
 }
+// --- Project Detail Page Styles ---
+
+// ... (other project-detail styles like .project-detail-title, .project-detail-content)
+
+.project-detail-image-container {
+  overflow: visible; // Allow shadow to be seen if it extends outside
+  position: relative; // Context for the image
+
+  .project-detail-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: relative; // To allow z-index if needed and for transform
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+    // box-shadow: none; // Start with no shadow
+
+    &:hover {
+      transform: translate(-1.5px, -1.5px); // Move up and left
+      // Elegant shadow down and right. Adjust values for desired "elegance"
+      // Format: offset-x | offset-y | blur-radius | spread-radius | color
+      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2); // Example shadow
+    }
+  }
+}
+
+// Ensure Bootstrap's img-fluid doesn't clip the shadow if overflow:hidden is on a parent
+.img-fluid {
+  // No specific change needed here unless a parent is clipping
+}
