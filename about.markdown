@@ -1,6 +1,7 @@
 ---
 layout: default
 title: About
+page_id: about_page
 permalink: /about/
 ---
 

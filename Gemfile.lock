@@ -162,10 +162,10 @@ PLATFORMS
 
 DEPENDENCIES
   http_parser.rb (~> 0.6.0)
-  jekyll (~> 4.4.1)
+  jekyll (~> 4.4, >= 4.4.1)
   jekyll-feed (~> 0.12)
-  jekyll-polyglot
-  jekyll-seo-tag
+  jekyll-polyglot (~> 1.9)
+  jekyll-seo-tag (~> 2.8)
   tzinfo (>= 1, < 3)
   tzinfo-data
   wdm (~> 0.1)

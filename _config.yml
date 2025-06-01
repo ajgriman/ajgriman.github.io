@@ -18,21 +18,23 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Antonio Griman portfolio
-email: your-email@example.com
+title: Grimán DevWorks
+email: griman@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Write an awesome description for your new site here. You can edit this
   line in _config.yml. It will appear in your document head meta (for
   Google search results) and in your feed.xml site description.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
+# twitter_username: jekyllrb
+github_username:  ajgriman
 
 # Build settings
 theme: null
 plugins:
   - jekyll-feed
+  - jekyll-polyglot
+  - jekyll-seo-tag
 
 # Exclude from processing.
 # The following items will not be processed, by default.
@@ -53,18 +55,17 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
-# ... your other config ...
-plugins:
-  - jekyll-polyglot
-  - jekyll-seo-tag
+# ... your other config ...  
 
 languages: ["en", "es"]
 default_lang: "en"
 exclude_from_localization: ["assets/", "scripts/"] # Add "admin/" if you have it
 
 polyglot:
-  default_lang_in_url: false # KEY: /en/ will NOT be in default lang URLs
-  pages_mode: filename 
+  default_lang_in_url: false # Start with false for simplicity, we can change to true later
+  parallel_localization: false # IMPORTANT: Set to false to rule out collisions
+  relative_permalinks: false
+  # pages_mode: filename # Keep commented out for now, use subdir for ES homepage
 collections:
   projects:
     output: true

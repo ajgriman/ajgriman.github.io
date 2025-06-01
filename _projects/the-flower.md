@@ -1,9 +1,9 @@
 ---
 layout: project
-lang: es
-translation_id: nas-assas-do
-title: "La flor"
-short_description: "Flor amazonica"
+lang: en
+page_id: project_flower
+title: "The Flower"
+short_description: "Amazonian flower"
 image_path: "example.png"
 date: 2025-05-31
 tech_stack: ["Ruby", "Jekyll", "HTML"]
@@ -12,6 +12,6 @@ live_url: "https://github.com/ajgriman/portfolio"
 # tags: []
 ---
 
-This is the main content area for 'La flor' (in ES).
-Write your detailed project description here in ES using Markdown.
+This is the main content area for 'The Flower' (in EN).
+Write your detailed project description here in EN using Markdown.
 This project is part of the 'nas-assas-do' translation set.

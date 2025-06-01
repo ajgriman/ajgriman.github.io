@@ -36,7 +36,7 @@ And that site.active_lang is set by jekyll-polyglot (e.g., "en", "es")
         </li>
         -->
             </ul>
-            <!-- Language Switcher aligned to the right -->
+            <!-- Language Switcher (Revised based on Polyglot Docs for page_id) -->
             <ul class="navbar-nav">
                 {% for lang_code in site.languages %}
                 {% if lang_code == site.active_lang %}
@@ -46,28 +46,57 @@ And that site.active_lang is set by jekyll-polyglot (e.g., "en", "es")
                 </li>
                 {% else %}
                 <li class="nav-item">
-                    {%- assign target_url_parts = page.url | split: '/' -%}
-                    {%- if site.active_lang == site.default_lang and target_url_parts[1] == site.active_lang -%}
-                    {%- comment -%} Current page is like /en/somepage and we are switching to non-default from default
-                    -%{%- endcomment -%}
-                    {%- assign current_path_without_lang = page.url | remove_first: site.active_lang_path -%}
+                    {%- assign target_url = nil -%}
+
+                    {%- comment %} Attempt 1: Use page.permalink_lang (new in Polyglot 1.8+, requires page_id) {%
+                    endcomment %}
+                    {%- if page.page_id and page.permalink_lang and page.permalink_lang[lang_code] -%}
+                    {%- assign path_segment = page.permalink_lang[lang_code] -%}
+                    {%- if lang_code == site.default_lang -%}
+                    {%- assign target_url = path_segment | relative_url -%}
                     {%- else -%}
-                    {%- comment -%} Handles default lang URLs like /somepage or non-default like /es/somepage -%{%-
-                    endcomment -%}
-                    {%- assign current_path_without_lang = page.url | remove_first: site.active_lang_path -%}
+                    {%- assign target_url = lang_code | prepend: '/' | append: path_segment | replace_first: '//', '/' |
+                    relative_url -%}
+                    {%- endif -%}
                     {%- endif -%}
 
-                    {%- if lang_code == site.default_lang -%}
-                    {%- comment -%} Switching to default language, URL should not have lang prefix -%{%- endcomment -%}
-                    <a class="nav-link" href="{{ current_path_without_lang | relative_url }}">
+                    {%- comment %} Attempt 2: Fallback to site.translations if permalink_lang didn't yield a URL (older
+                    method) {% endcomment %}
+                    {%- unless target_url -%}
+                    {%- if site.translations and page.page_id and site.translations[page.page_id] and
+                    site.translations[page.page_id][lang_code] -%}
+                    {%- assign translated_page_obj = site.translations[page.page_id][lang_code] -%}
+                    {%- if translated_page_obj.url -%}
+                    {%- assign target_url = translated_page_obj.url | relative_url -%}
+                    {%- endif -%}
+                    {%- endif -%}
+                    {%- endunless -%}
+
+                    {%- comment %} Attempt 3: Absolute fallback to the homepage of the target language if no specific
+                    page translation found {% endcomment %}
+                    {%- unless target_url -%}
+                    {%- assign home_page_id_for_fallback = "home_page" -%}
+                    {%- if site.translations and site.translations[home_page_id_for_fallback] and
+                    site.translations[home_page_id_for_fallback][lang_code] -%}
+                    {%- assign fallback_home_obj = site.translations[home_page_id_for_fallback][lang_code] -%}
+                    {%- if fallback_home_obj.url -%}
+                    {%- assign target_url = fallback_home_obj.url | relative_url -%}
+                    {%- endif -%}
+                    {%- elsif lang_code == site.default_lang -%}
+                    {%- assign target_url = "/" | relative_url -%}
+                    {%- else -%}
+                    {%- assign target_url = lang_code | prepend: '/' | append: '/' | replace_first: '//', '/' |
+                    relative_url -%}
+                    {%- endif -%}
+                    {%- endunless -%}
+
+                    {%- if target_url -%}
+                    <a class="nav-link" {% static_href %}href="{{ target_url }}" {% endstatic_href %}>
                         {{ site.data.locales[lang_code].lang_name | default: lang_code | upcase }}
                     </a>
                     {%- else -%}
-                    {%- comment -%} Switching to non-default language, URL should have lang prefix -%{%- endcomment -%}
-                    <a class="nav-link"
-                        href="{{ lang_code | prepend: '/' | append: current_path_without_lang | relative_url }}">
-                        {{ site.data.locales[lang_code].lang_name | default: lang_code | upcase }}
-                    </a>
+                    <span class="nav-link text-muted">{{ site.data.locales[lang_code].lang_name | default: lang_code |
+                        upcase }} (N/A)</span>
                     {%- endif -%}
                 </li>
                 {% endif %}
