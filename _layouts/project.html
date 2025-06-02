@@ -1,13 +1,14 @@
 ---
-layout: default
+layout: default # Assumes your main layout provides header, footer, and Bootstrap CSS/JS
 ---
 
-<div class="container mt-4 mb-5">
+<div class="container mt-4 mb-5"> {/* Main container for page content */}
     <div class="row justify-content-center">
-        <div class="col-lg-8">
+        <div class="col-lg-8"> {/* Creates a narrower, Medium-like content column on larger screens */}
 
             <article class="project-page-article">
-                <header class="project-header mb-4 text-lg-start text-center">
+                <header class="project-header mb-4 text-lg-start text-center"> {/* Centered on small, left-aligned on
+                    large */}
                     <h1 class="project-title display-5 fw-bold mb-3">{{ page.title }}</h1>
                     {% if page.short_description %}
                     <p class="project-short-description fs-5 text-muted">{{ page.short_description }}</p>
@@ -53,7 +54,7 @@ layout: default
                 {% endif %}
 
                 <section class="project-content-body fs-5 lh-lg">
-                    {{ content }}
+                    {{ content }} {/* THIS IS WHERE YOUR PROJECT'S MARKDOWN CONTENT GOES */}
                 </section>
 
                 {% if page.image_path_alt %}
@@ -63,7 +64,7 @@ layout: default
                 </figure>
                 {% endif %}
 
-                {% comment %} --- TECHNOLOGIES SECTION (MOVED HERE) --- {% endcomment %}
+                {% comment %} --- TECHNOLOGIES SECTION (Order: Below content, above video) --- {% endcomment %}
                 {% if page.tech_stack and page.tech_stack.size > 0 %}
                 <section class="project-tech-stack-full my-5 py-3">
                     <h3 class="h5 mb-3 text-center text-lg-start">{{
@@ -92,7 +93,7 @@ layout: default
                 {% endif %}
                 {% comment %} --- END TECHNOLOGIES SECTION --- {% endcomment %}
 
-                {% comment %} --- VIDEO EMBED SECTION (NOW AFTER TECH STACK) --- {% endcomment %}
+                {% comment %} --- VIDEO EMBED SECTION --- {% endcomment %}
                 {% if page.video_url %}
                 <div class="project-video-embed my-5">
                     {%- assign youtube_video_id = nil -%}
@@ -144,7 +145,7 @@ layout: default
                 {% endif %}
                 {% comment %} --- END VIDEO EMBED SECTION --- {% endcomment %}
 
-                {% comment %} --- BUTTON SECTION (NOW AFTER VIDEO) --- {% endcomment %}
+                {% comment %} --- BUTTON SECTION --- {% endcomment %}
                 {% if page.repo_url or page.live_url %}
                 <section class="project-links my-5">
                     {% if page.live_url %}

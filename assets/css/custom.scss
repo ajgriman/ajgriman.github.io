@@ -1,81 +1,115 @@
 ---
 ---
-
 // --- Variables ---
 // Fonts
-$card-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; // Clean sans-serif stack
+$card-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
 // Colors
 $card-background-color: #fff;
-$card-title-color: #333333; // Dark gray / near black
-$card-description-color: #555555; // Medium gray
-$card-image-hover-shadow-color: rgba(0, 0, 0, 0.25); // For the shadow
-$card-delimiter-color: #504f4e89; // Orange (adjust if it's a different shade from image)
+$card-title-color: #333333;
+$card-description-color: #555555;
+$card-image-hover-shadow-color: rgba(0, 0, 0, 0.25);
+$card-delimiter-color: #504f4e89; // Your orange-like delimiter
 
-// Spacing & Sizing (these are estimates, adjust to match visuals precisely)
-$card-overall-padding: 15px; // Approx. space of the "green area" around content
+// Spacing & Sizing
+$card-overall-padding: 15px;
 $card-title-font-size: 1.75rem;
-$card-title-margin-bottom: 15px; // Space below title, before image
-
-$card-image-margin-bottom: 15px; // Space below image, before description
-
+$card-title-margin-bottom: 15px;
+$card-image-margin-bottom: 15px;
 $card-description-font-size: 1rem;
 $card-description-line-height: 1.6;
-$card-description-margin-bottom: 20px; // Space below description, before delimiter
-
-$card-delimiter-height: 0.5px; // Thickness of the orange line
+$card-description-margin-bottom: 15px; // Adjusted for space before tech stack
+$card-delimiter-height: 0.5px;
 
 // Effects
-$card-image-hover-shadow: 0 8px 20px $card-image-hover-shadow-color; // Stronger shadow
+$card-image-hover-shadow: 0 8px 20px $card-image-hover-shadow-color; // From your backup for image
+$card-title-hover-text-shadow: 1px 1px 2px rgba(0,0,0,0.2);    // New for title hover
 
-// --- Custom Project Card Styles ---
+// Tech Stack on Card
+$card-tech-stack-font-size: $card-description-font-size;     // Same as description
+$card-tech-stack-color: $card-description-color;             // Same as description
+$card-tech-stack-margin-bottom: 20px;                       // Space after tech stack, before metadata/delimiter
+$tech-stack-separator-color: #bbb;                          // Color for middot separator
+
+// Project Detail Image Hover (from your backup)
+$detail-image-hover-transform: translate(-1.5px, -1.5px);
+$detail-image-hover-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+
+// --- General Body Styles (Minimal - Add your own global styles here) ---
+body {
+  font-family: $card-font-family; // Using card font as a general default
+  line-height: 1.6;
+  color: #333; // General text color
+  background-color: #f8f9fa; // Light page background, adjust as needed
+}
+
+a {
+  // Assuming Bootstrap or other global styles handle link colors by default
+  // color: #007bff;
+  // text-decoration: none;
+  // &:hover {
+  //   color: #0056b3;
+  //   text-decoration: underline;
+  // }
+}
+
+
+// --- Custom Project Card Link Wrapper ---
+.custom-project-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+}
+
+// --- Custom Project Card Styles (Based on YOUR backup structure + additions) ---
 .custom-project-card {
-  background-color: $card-background-color;
-  padding: $card-overall-padding; // This is the "green area" padding
-  margin-bottom: 1px; // Space below each card in a grid
-  position: relative; // For the delimiter to be absolutely positioned if needed, or just for context
-  margin-bottom: 1px;
-  // The orange delimiter line at the bottom of the card itself
-  // This approach makes it part of the card's padding area.
-  // If the delimiter is outside the main padding, it needs different styling.
-  // For now, assuming it's within the card structure.
-  // Using an explicit div for the delimiter is more robust.
-  &__delimiter {
-    height: $card-delimiter-height;
-    background-color: $card-delimiter-color;
-    width: 100%; // Full width of the card's content area
-    // If card has padding, and delimiter should span full width of card including padding:
-    // position: absolute;
-    // bottom: 0;
-    // left: 0;
-    // width: 100%; 
-  }
+  background-color: transparent;
+  padding: $card-overall-padding;
+  margin-bottom: 1px; // From your backup (note: also in .row > [class*="col-"] rule further down)
+  position: relative;
+  height: 100%;
+  display: flex;         // Added for flex layout
+  flex-direction: column; // Added for flex layout
+  // No border or explicit resting box-shadow defined here, per your backup's base .custom-project-card
 
   &__title {
     font-family: $card-font-family;
     font-size: $card-title-font-size;
     font-weight: bold;
     color: $card-title-color;
-    margin-top: 0; // Remove default h3 margin if any
+    margin-top: 0;
     margin-bottom: $card-title-margin-bottom;
     line-height: 1.3;
     text-align: left;
+    transition: text-shadow 0.2s ease-out; // ADDED transition for hover
+
+    &:hover { // ADDED independent hover
+      text-shadow: $card-title-hover-text-shadow;
+    }
   }
 
   &__image-container {
     margin-bottom: $card-image-margin-bottom;
-    // No specific styling needed here unless for positioning/overflow
   }
-  
+
   &__image {
     display: block;
     width: 100%;
-    height: auto; // Respects aspect ratio
-    transition: box-shadow 0.3s ease;
+    height: auto;
+    object-fit: cover; // ADDED for better image scaling
+    transition: box-shadow 0.3s ease; // From your backup
 
-    &:hover {
+    &:hover { // From your backup - This is the independent image hover
       box-shadow: $card-image-hover-shadow;
     }
+  }
+
+  // Wrapper for text content (description, tech stack, metadata, secondary title)
+  &__text-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; // Allows this whole block to grow, pushing delimiter to the bottom
   }
 
   &__description {
@@ -83,63 +117,139 @@ $card-image-hover-shadow: 0 8px 20px $card-image-hover-shadow-color; // Stronger
     font-size: $card-description-font-size;
     color: $card-description-color;
     line-height: $card-description-line-height;
-    margin-top: 0; // Remove default p margin if any
-    margin-bottom: $card-description-margin-bottom; // Space before the delimiter
+    margin-top: 0;
+    margin-bottom: $card-description-margin-bottom; // Space before tech stack
     text-align: left;
   }
-}
 
-// --- Styles for Bootstrap Grid columns containing the cards ---
-// This ensures that cards within Bootstrap columns behave as expected
-// and that the card's background and delimiter work within the column's padding.
-.row > [class*="col-"] { // Targetting Bootstrap columns directly
-  .custom-project-card {
-    height: 100%; // If you want cards in a row to be same height (Bootstrap 5 card group behavior)
-                  // This might conflict with masonry if image heights vary a lot
+  // ADDED: Tech Stack on Card
+  &__tech-stack {
+    font-family: $card-font-family;
+    font-size: $card-tech-stack-font-size;
+    color: $card-tech-stack-color;
+    line-height: $card-description-line-height; // Match description
+    margin-top: 0;
+    margin-bottom: $card-tech-stack-margin-bottom; // Space after tech stack
+    text-align: left;
+
+    .tech-stack-separator {
+      margin: 0 0.25em;
+      color: $tech-stack-separator-color;
+    }
+  }
+
+  // ADDED/KEPT: Metadata and Secondary Title on Card (styles if you use these in HTML)
+  &__metadata { // Assuming you might re-add this to the card HTML
+    font-size: 0.8rem;
+    color: #777;
+    margin-bottom: 8px;
+    text-align: left;
+  }
+
+  &__secondary-title { // Assuming you might re-add this to the card HTML
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+    line-height: 1.4;
+    text-align: left;
+  }
+
+
+  &__delimiter {
+    height: $card-delimiter-height;
+    background-color: $card-delimiter-color;
+    width: 100%;
+    margin-top: auto; // ADDED/ENSURED: Pushes delimiter to the bottom of the flex container
   }
 }
-// --- Project Detail Page Styles ---
 
-// ... (other project-detail styles like .project-detail-title, .project-detail-content)
+// --- Styles for Bootstrap Grid columns containing the cards (From your backup) ---
+.row > [class*="col-"] {
+  .custom-project-card {
+    height: 100%; // From your backup
+    // margin-bottom: 1px; // This was in your .custom-project-card, also applies here.
+                         // If using Bootstrap's grid `mb-4` on the column itself, this might be redundant.
+  }
+}
 
-.project-detail-image-container {
-  overflow: visible; // Allow shadow to be seen if it extends outside
-  position: relative; // Context for the image
+// --- Project Detail Page Styles (From your backup) ---
+// ... (other project-detail styles like .project-detail-title, .project-detail-content from your backup would go here if any)
 
-  .project-detail-image {
+.project-detail-image-container { // From your backup
+  overflow: visible;
+  position: relative;
+
+  .project-detail-image { // From your backup
     width: 100%;
     height: auto;
     display: block;
-    position: relative; // To allow z-index if needed and for transform
+    position: relative;
     transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
-    // box-shadow: none; // Start with no shadow
 
-    &:hover {
-      transform: translate(-1.5px, -1.5px); // Move up and left
-      // Elegant shadow down and right. Adjust values for desired "elegance"
-      // Format: offset-x | offset-y | blur-radius | spread-radius | color
-      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2); // Example shadow
+    &:hover { // From your backup
+      transform: $detail-image-hover-transform;
+      box-shadow: $detail-image-hover-box-shadow;
     }
   }
 }
 
-// Ensure Bootstrap's img-fluid doesn't clip the shadow if overflow:hidden is on a parent
-.img-fluid {
-  // No specific change needed here unless a parent is clipping
-}
-/* Basic styling for tech SVG icons */
-.tech-icons-container .tech-icon-item {
-  margin: 0.5rem; /* Spacing around each icon item */
+// Ensure Bootstrap's img-fluid doesn't clip the shadow (From your backup)
+// .img-fluid {
+  // No specific change needed here unless a parent is clipping - From your backup
+// }
+
+/* Tech Icons on Project Detail Page (From your backup) */
+.tech-icons-container {
+  .tech-icon-item {
+    margin: 0.5rem;
+  }
+
+  .tech-svg-icon {
+    svg {
+      width: 32px;
+      height: 32px;
+      fill: #333;
+      vertical-align: middle;
+    }
+  }
+
+  .tech-icon-label {
+    font-size: 0.8rem;
+    color: #555;
+  }
 }
 
-.tech-icons-container .tech-svg-icon svg {
-  width: 32px;  /* Adjust size as needed */
-  height: 32px; /* Adjust size as needed */
-  fill: #333; /* Default to dark grey/black, can be overridden */
-  vertical-align: middle;
-}
-
-.tech-icons-container .tech-icon-label {
-  font-size: 0.8rem;
-  color: #555;
+/* Project Detail Page Text Content (Minimal additions - EXPAND AS NEEDED) */
+/* These are for the _layouts/project.html main content area */
+.project-page-article .project-content-body {
+  p {
+    margin-bottom: 1.25rem;
+  }
+  blockquote {
+    border-left: 3px solid #ccc;
+    padding-left: 1rem;
+    margin-left: 0;
+    margin-right: 0;
+    font-style: italic;
+    color: #555;
+  }
+  pre {
+    background-color: #f0f0f0;
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+    code { // Code inside pre
+      background-color: transparent;
+      padding: 0;
+    }
+  }
+  // For inline code not in a pre block
+  code {
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 0.9em;
+    background-color: #f8f9fa; // Light background for inline code
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+  }
 }

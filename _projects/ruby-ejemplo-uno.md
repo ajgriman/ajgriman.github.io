@@ -1,17 +1,17 @@
 ---
 layout: project
 lang: es
-page_id: ruby-on-rails-crud
-title: "CRUD en Rails"
-short_description: "Ejercicio de CRUD en Rails"
-card_image_path: "https://ik.imagekit.io/rkdscdtap/image2.png?updatedAt=1748860517624"
+page_id: ruby-sample-one
+title: "Ruby Ejemplo Uno"
+short_description: "Proyecto de Ruby Ejemplo Uno"
+card_image_path: "https://ik.imagekit.io/rkdscdtap/image1.png?updatedAt=1748860175746"
 image_path: "https://bairesdev.mo.cloudinary.net/blog/2023/10/Best-C-IDEs-Text-Editors.jpg"
 image_path_alt: "https://bairesdev.mo.cloudinary.net/blog/2023/10/Best-C-IDEs-Text-Editors.jpg"
 video_url: "https://ik.imagekit.io/rkdscdtap/sample-video.mp4?updatedAt=1748817227647"
-date: 2025-06-01
-tech_stack: ["Ruby", "HTML", "SCSS", "Ruby On Rails"]
+date: 2025-06-02
+tech_stack: ["Ruby", "JavaScript", "HTML", "React", "CSS"]
 repo_url: "https://github.com"
-live_url: "https://github.com"
+live_url: "https://localmarche.com.ve"
 # tags: []
 ---
 
@@ -25,4 +25,4 @@ Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolor
 eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
 
 
-This project ('CRUD en Rails' - ES) is part of the 'ruby-on-rails-crud' page_id set.
+This project ('Ruby Ejemplo Uno' - ES) is part of the 'ruby-sample-one' page_id set.

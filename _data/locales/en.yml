@@ -24,3 +24,8 @@ project_watch_video: "Watch Video"
 # ... other keys ...
 project_view_repo: "GitHub Repo" 
 project_view_live: "Live"         
+
+# ... other keys ...
+card_this_year: "This year"
+card_years_ago: "years ago"
+card_secondary_title_placeholder: "Exploring the Impact" # Example

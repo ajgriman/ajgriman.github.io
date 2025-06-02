@@ -4,6 +4,7 @@ lang: en
 page_id: ruby-on-rails-crud
 title: "CRUD in Rails"
 short_description: "CRUD exercise on Rails"
+card_image_path: "https://ik.imagekit.io/rkdscdtap/image2.png?updatedAt=1748860517624"
 image_path: "https://bairesdev.mo.cloudinary.net/blog/2023/10/Best-C-IDEs-Text-Editors.jpg"
 image_path_alt: "https://bairesdev.mo.cloudinary.net/blog/2023/10/Best-C-IDEs-Text-Editors.jpg"
 video_url: "https://ik.imagekit.io/rkdscdtap/sample-video.mp4?updatedAt=1748817227647"

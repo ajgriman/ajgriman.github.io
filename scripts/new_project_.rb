@@ -20,10 +20,14 @@ page_id = STDIN.gets.chomp.downcase.strip.gsub(/\s+/, '-').gsub(/[^\w-]/, '')
 abort("ABORTED: Project Page ID cannot be empty and must be valid.") if page_id.empty? || page_id == '-'
 
 puts "\n--- Shared Project Details (often same for both languages) ---"
-print "Primary Image Path (e.g., /assets/images/project.jpg): "
+print "CARD Image Path (for homepage grid, e.g., /assets/images/cards/project-card.jpg): "
+card_image_path = STDIN.gets.chomp.strip
+abort("ABORTED: CARD Image Path cannot be empty.") if card_image_path.empty?
+
+print "Primary Detail Page Image Path (e.g., /assets/images/projects/project-detail.jpg): "
 image_path = STDIN.gets.chomp.strip
 
-print "Alternative Image Path (optional, e.g., /assets/images/project-alt.jpg): "
+print "Alternative Detail Page Image Path (optional, e.g., /assets/images/projects/project-alt.jpg): "
 image_path_alt = STDIN.gets.chomp.strip
 
 print "Video URL (optional, e.g., https://youtube.com/watch?v=XXXXX): "
@@ -82,6 +86,7 @@ details_by_lang.each do |lang, details|
 
   yaml_title = details[:title].gsub('"', '\"')
   yaml_short_desc = details[:short_description].gsub('"', '\"')
+  yaml_card_image_path = card_image_path.gsub('"', '\"')
   yaml_image_path = image_path.gsub('"', '\"')
   yaml_image_path_alt = image_path_alt.gsub('"', '\"')
   yaml_video_url = video_url.gsub('"', '\"')
@@ -96,6 +101,7 @@ details_by_lang.each do |lang, details|
     "page_id: #{page_id}",
     "title: \"#{yaml_title}\"",
     "short_description: \"#{yaml_short_desc}\"",
+    "card_image_path: \"#{yaml_card_image_path}\"",
     "image_path: \"#{yaml_image_path}\"",
   ]
   front_matter_lines << "image_path_alt: \"#{yaml_image_path_alt}\"" unless image_path_alt.empty?

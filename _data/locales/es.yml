@@ -23,3 +23,8 @@ project_reading_time_minute: "min de lectura"
 # ... other keys ...
 project_view_repo: "GitHub Repo"
 project_view_live: "Sitio en Vivo"      
+
+# ... other keys ...
+card_this_year: "Este año"
+card_years_ago: "años atrás" # or "hace años"
+card_secondary_title_placeholder: "Explorando el Impacto" # Example

@@ -1,0 +1,226 @@
+---
+---
+
+// --- Variables ---
+// Fonts
+$card-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; // Clean sans-serif stack
+
+// Colors
+$card-background-color: #fff;
+$card-title-color: #333333; // Dark gray / near black
+$card-description-color: #555555; // Medium gray
+$card-image-hover-shadow-color: rgba(0, 0, 0, 0.25); // For the shadow
+$card-delimiter-color: #504f4e89; // Orange (adjust if it's a different shade from image)
+
+// Spacing & Sizing (these are estimates, adjust to match visuals precisely)
+$card-overall-padding: 15px; // Approx. space of the "green area" around content
+$card-title-font-size: 1.75rem;
+$card-title-margin-bottom: 15px; // Space below title, before image
+
+$card-image-margin-bottom: 15px; // Space below image, before description
+
+$card-description-font-size: 1rem;
+$card-description-line-height: 1.6;
+$card-description-margin-bottom: 20px; // Space below description, before delimiter
+
+$card-delimiter-height: 0.5px; // Thickness of the orange line
+
+// Effects
+$card-image-hover-shadow: 0 8px 20px $card-image-hover-shadow-color; // Stronger shadow
+
+// --- Custom Project Card Styles ---
+.custom-project-card {
+  background-color: $card-background-color;
+  padding: $card-overall-padding; // This is the "green area" padding
+  margin-bottom: 1px; // Space below each card in a grid
+  position: relative; // For the delimiter to be absolutely positioned if needed, or just for context
+  margin-bottom: 1px;
+  // The orange delimiter line at the bottom of the card itself
+  // This approach makes it part of the card's padding area.
+  // If the delimiter is outside the main padding, it needs different styling.
+  // For now, assuming it's within the card structure.
+  // Using an explicit div for the delimiter is more robust.
+  &__delimiter {
+    height: $card-delimiter-height;
+    background-color: $card-delimiter-color;
+    width: 100%; // Full width of the card's content area
+    // If card has padding, and delimiter should span full width of card including padding:
+    // position: absolute;
+    // bottom: 0;
+    // left: 0;
+    // width: 100%; 
+  }
+
+  &__title {
+    font-family: $card-font-family;
+    font-size: $card-title-font-size;
+    font-weight: bold;
+    color: $card-title-color;
+    margin-top: 0; // Remove default h3 margin if any
+    margin-bottom: $card-title-margin-bottom;
+    line-height: 1.3;
+    text-align: left;
+  }
+
+  &__image-container {
+    margin-bottom: $card-image-margin-bottom;
+    // No specific styling needed here unless for positioning/overflow
+  }
+  
+  &__image {
+    display: block;
+    width: 100%;
+    height: auto; // Respects aspect ratio
+    transition: box-shadow 0.3s ease;
+
+    &:hover {
+      box-shadow: $card-image-hover-shadow;
+    }
+  }
+
+  &__description {
+    font-family: $card-font-family;
+    font-size: $card-description-font-size;
+    color: $card-description-color;
+    line-height: $card-description-line-height;
+    margin-top: 0; // Remove default p margin if any
+    margin-bottom: $card-description-margin-bottom; // Space before the delimiter
+    text-align: left;
+  }
+}
+
+// --- Styles for Bootstrap Grid columns containing the cards ---
+// This ensures that cards within Bootstrap columns behave as expected
+// and that the card's background and delimiter work within the column's padding.
+.row > [class*="col-"] { // Targetting Bootstrap columns directly
+  .custom-project-card {
+    height: 100%; // If you want cards in a row to be same height (Bootstrap 5 card group behavior)
+                  // This might conflict with masonry if image heights vary a lot
+  }
+}
+// --- Project Detail Page Styles ---
+
+// ... (other project-detail styles like .project-detail-title, .project-detail-content)
+
+.project-detail-image-container {
+  overflow: visible; // Allow shadow to be seen if it extends outside
+  position: relative; // Context for the image
+
+  .project-detail-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: relative; // To allow z-index if needed and for transform
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+    // box-shadow: none; // Start with no shadow
+
+    &:hover {
+      transform: translate(-1.5px, -1.5px); // Move up and left
+      // Elegant shadow down and right. Adjust values for desired "elegance"
+      // Format: offset-x | offset-y | blur-radius | spread-radius | color
+      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2); // Example shadow
+    }
+  }
+}
+
+// Ensure Bootstrap's img-fluid doesn't clip the shadow if overflow:hidden is on a parent
+.img-fluid {
+  // No specific change needed here unless a parent is clipping
+}
+/* Basic styling for tech SVG icons */
+.tech-icons-container .tech-icon-item {
+  margin: 0.5rem; /* Spacing around each icon item */
+}
+
+.tech-icons-container .tech-svg-icon svg {
+  width: 32px;  /* Adjust size as needed */
+  height: 32px; /* Adjust size as needed */
+  fill: #333; /* Default to dark grey/black, can be overridden */
+  vertical-align: middle;
+}
+
+.tech-icons-container .tech-icon-label {
+  font-size: 0.8rem;
+  color: #555;
+}
+/* --- Project Card Base Styling (Your Custom Classes) --- */
+.custom-project-card-link {
+  display: block; /* Makes the link fill its container (the grid column) */
+  text-decoration: none; /* Removes underline from link */
+  color: inherit; /* Makes text inside the link inherit color */
+  height: 100%; /* Ensures the link takes full height of the grid item */
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* For whole card hover */
+}
+
+.custom-project-card {
+  background-color: #fff; /* Example: white background */
+  border: 1px solid #e0e0e0; /* Example: light grey border */
+  border-radius: 8px; /* Example: rounded corners */
+  overflow: hidden; /* Ensures image corners also appear rounded if image fills container */
+  height: 100%; /* Makes card fill the link wrapper */
+  display: flex;
+  flex-direction: column;
+  /* Add a subtle box-shadow for depth, will be enhanced on hover */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.custom-project-card__image-container {
+  width: 100%;
+  /* If you want a fixed aspect ratio for the image container: */
+  /* position: relative; */
+  /* padding-top: 75%; */ /* Example for 4:3 aspect ratio (300/400 * 100) */
+}
+
+.custom-project-card__image {
+  display: block;
+  width: 100%;
+  height: auto; /* Or fixed height if using aspect ratio trick on container */
+  object-fit: cover; /* Ensures image covers the container, may crop */
+  /* If you had a specific hover effect *only* on the image before,
+     you might define it here like:
+     transition: transform 0.3s ease-out;
+     but we are moving it to the whole card. */
+}
+
+.custom-project-card__text-content {
+  padding: 1rem; /* Example padding for text */
+  flex-grow: 1; /* Allows this section to grow and push delimiter/footer down */
+  display: flex;
+  flex-direction: column;
+}
+
+.custom-project-card__title {
+  font-size: 1.25rem; /* Example title size */
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #333; /* Example title color */
+}
+
+.custom-project-card__description {
+  font-size: 0.9rem; /* Example description size */
+  color: #666; /* Example description color */
+  line-height: 1.5;
+  flex-grow: 1; /* Allows description to take available space */
+  margin-bottom: 0; /* Remove default p margin if any */
+}
+
+.custom-project-card__delimiter {
+  border-top: 1px solid #f0f0f0; /* Example delimiter style */
+  margin: 0.75rem 1rem; /* Example margin for delimiter */
+}
+
+/* --- Hover Effect for the Entire Card --- */
+/* This aims to mimic a common image hover effect (like slight scale/lift) */
+.custom-project-card-link:hover .custom-project-card {
+  transform: translateY(-5px) scale(1.02); /* Example: slight lift and zoom */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Example: enhanced shadow */
+  /* If your original image hover was different (e.g., opacity), adjust here: */
+  /* opacity: 0.8; */
+}
+
+/* If the image itself had a *different* hover effect you ALSO want to keep
+   when the card is hovered, you might need something like:
+.custom-project-card-link:hover .custom-project-card__image {
+  transform: scale(1.05); // Example if image zoomed more
+}
+*/
