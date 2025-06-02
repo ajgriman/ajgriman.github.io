@@ -2,13 +2,12 @@
 layout: default # Assumes your main layout provides header, footer, and Bootstrap CSS/JS
 ---
 
-<div class="container mt-4 mb-5"> {/* Main container for page content */}
+<div class="container mt-4 mb-5">
     <div class="row justify-content-center">
-        <div class="col-lg-8"> {/* Creates a narrower, Medium-like content column on larger screens */}
+        <div class="col-lg-8">
 
             <article class="project-page-article">
-                <header class="project-header mb-4 text-lg-start text-center"> {/* Centered on small, left-aligned on
-                    large */}
+                <header class="project-header mb-4 text-lg-start text-center"> 
                     <h1 class="project-title display-5 fw-bold mb-3">{{ page.title }}</h1>
                     {% if page.short_description %}
                     <p class="project-short-description fs-5 text-muted">{{ page.short_description }}</p>
@@ -54,7 +53,7 @@ layout: default # Assumes your main layout provides header, footer, and Bootstra
                 {% endif %}
 
                 <section class="project-content-body fs-5 lh-lg">
-                    {{ content }} {/* THIS IS WHERE YOUR PROJECT'S MARKDOWN CONTENT GOES */}
+                    {{ content }}
                 </section>
 
                 {% if page.image_path_alt %}

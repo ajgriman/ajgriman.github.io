@@ -28,3 +28,13 @@ project_view_live: "Sitio en Vivo"
 card_this_year: "Este año"
 card_years_ago: "años atrás" # or "hace años"
 card_secondary_title_placeholder: "Explorando el Impacto" # Example
+# ... other keys ...
+card_year_ago: "año atrás" # Singular (or "hace 1 año")
+# ... existing keys ...
+sidebar_about_title: "Acerca de"
+sidebar_about_content: "¡Bienvenido a mi portafolio! Soy un desarrollador apasionado enfocado en crear soluciones web impactantes y explorar nuevas tecnologías." # Example
+read_more: "Leer más"
+sidebar_tags_title: "Etiquetas"
+sidebar_popular_title: "Proyectos Recientes"
+# showing_default_lang_projects: "Mostrando proyectos en el idioma predeterminado." # Already added previously
+no_projects_sidebar: "No hay proyectos recientes para mostrar."

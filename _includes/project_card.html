@@ -38,12 +38,11 @@
                 {%- assign current_year = "now" | date: "%Y" | plus: 0 -%}
                 {%- assign years_ago = current_year | minus: project_year -%}
                 {%- if years_ago < 1 -%} {{ t.card_this_year | default: "This year" }} {%- else -%} {{ years_ago }} {{
-                    t.card_years_ago | default: "years ago" }} {%- endif -%} {% if p.tech_stack.first %} in {{
-                    p.tech_stack.first }} {% endif %} </div>
+                    t.card_years_ago | default: "years ago" }} {%- endif -%}</div>
 
-                    <h4 class="custom-project-card__secondary-title">
+                    <!-- <h4 class="custom-project-card__secondary-title">
                         {{ t.card_secondary_title_placeholder | default: "Further Details" }}
-                    </h4>
+                    </h4> -->
             </div>
 
             <div class="custom-project-card__delimiter"></div>

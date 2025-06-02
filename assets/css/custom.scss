@@ -5,56 +5,84 @@
 $card-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
 // Colors
-$card-background-color: #fff;
+$card-background-color: transparent;
 $card-title-color: #333333;
 $card-description-color: #555555;
 $card-image-hover-shadow-color: rgba(0, 0, 0, 0.25);
-$card-delimiter-color: #504f4e89; // Your orange-like delimiter
+$card-delimiter-color: #504f4e89; // Your orange-like delimiter for main cards
 
-// Spacing & Sizing
+// Spacing & Sizing (Main Homepage Cards)
 $card-overall-padding: 15px;
 $card-title-font-size: 1.75rem;
 $card-title-margin-bottom: 15px;
 $card-image-margin-bottom: 15px;
 $card-description-font-size: 1rem;
 $card-description-line-height: 1.6;
-$card-description-margin-bottom: 15px; // Adjusted for space before tech stack
+$card-description-margin-bottom: 15px;
 $card-delimiter-height: 0.5px;
 
-// Effects
-$card-image-hover-shadow: 0 8px 20px $card-image-hover-shadow-color; // From your backup for image
-$card-title-hover-text-shadow: 1px 1px 2px rgba(0,0,0,0.2);    // New for title hover
+// Effects (Main Homepage Cards)
+$card-image-hover-shadow: 0 8px 20px $card-image-hover-shadow-color; // For main card image
+$card-title-hover-text-shadow: 1px 1px 2px rgba(0,0,0,0.2);    // For main card title
 
-// Tech Stack on Card
-$card-tech-stack-font-size: $card-description-font-size;     // Same as description
-$card-tech-stack-color: $card-description-color;             // Same as description
-$card-tech-stack-margin-bottom: 20px;                       // Space after tech stack, before metadata/delimiter
-$tech-stack-separator-color: #bbb;                          // Color for middot separator
+// Tech Stack on Main Card
+$card-tech-stack-font-size: $card-description-font-size;
+$card-tech-stack-color: $card-description-color;
+$card-tech-stack-margin-bottom: 20px;
+$tech-stack-separator-color: #bbb;
 
-// Project Detail Image Hover (from your backup)
+// Project Detail Image Hover (From your backup)
 $detail-image-hover-transform: translate(-1.5px, -1.5px);
 $detail-image-hover-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
 
+// --- Sidebar Specific Variables ---
+$sidebar-font-family: $card-font-family; // Can be different if needed
+$sidebar-background-color: transparent; // Sidebar blends with page background
+$sidebar-section-title-font-size: 1.8rem;
+$sidebar-section-title-color: #222;
+$sidebar-section-title-margin-top: 2.5rem;
+$sidebar-section-title-margin-bottom: 1rem;
+$sidebar-delimiter-color: #676767; // Delimiter between sidebar sections
+$sidebar-delimiter-margin-vertical: 1.5rem;
+
+$sidebar-about-text-font-size: 0.95rem;
+$sidebar-about-text-color: #555;
+$sidebar-about-text-line-height: 1.7;
+
+$sidebar-tag-bg-color: #f0f0f0;
+$sidebar-tag-text-color: #333;
+$sidebar-tag-font-size: 0.75rem;
+$sidebar-tag-hover-bg-color: #e0e0e0;
+
+$sidebar-card-internal-padding: 0px 40px 0px 40px; // External padding for the card items within the sidebar section.
+                                     // Set to 0px if margins on elements handle all spacing.
+                                     // Or e.g., 10px if you want padding inside each card block.
+$sidebar-card-title-font-size: 1.1rem; // Adjusted for sidebar visual hierarchy
+$sidebar-card-title-color: #222;
+$sidebar-card-title-margin-bottom: 0.5rem; // Space below title, before image
+
+$sidebar-card-image-container-margin-bottom: 0.5rem; // Space below image, before meta
+$sidebar-card-image-bg-placeholder: #f0f0f0; // Background for image container (4:3 ratio)
+
+$sidebar-card-meta-font-size: 0.8rem;
+$sidebar-card-meta-color: #777;
+$sidebar-card-meta-line-height: 1.5;
+
+$sidebar-card-stack-margin-bottom: 1.5rem; // Space between stacked sidebar cards
+
 // --- General Body Styles (Minimal - Add your own global styles here) ---
 body {
-  font-family: $card-font-family; // Using card font as a general default
+  font-family: $card-font-family;
   line-height: 1.6;
-  color: #333; // General text color
-  background-color: #f8f9fa; // Light page background, adjust as needed
+  color: #333;
+  background-color: #f8f9fa;
 }
 
 a {
-  // Assuming Bootstrap or other global styles handle link colors by default
-  // color: #007bff;
-  // text-decoration: none;
-  // &:hover {
-  //   color: #0056b3;
-  //   text-decoration: underline;
-  // }
+  // Assuming Bootstrap or other global styles handle link colors
 }
 
-
-// --- Custom Project Card Link Wrapper ---
+// --- Custom Project Card Link Wrapper (Homepage Grid) ---
 .custom-project-card-link {
   display: block;
   text-decoration: none;
@@ -62,91 +90,87 @@ a {
   height: 100%;
 }
 
-// --- Custom Project Card Styles (Based on YOUR backup structure + additions) ---
+// --- Custom Project Card Styles (Homepage Grid - Based on YOUR backup structure + additions) ---
 .custom-project-card {
-  background-color: transparent;
-  padding: $card-overall-padding;
-  margin-bottom: 1px; // From your backup (note: also in .row > [class*="col-"] rule further down)
+  background-color: $card-background-color; // Uses main card variable
+  padding: $card-overall-padding;          // Uses main card variable
+  margin-bottom: 1px;
   position: relative;
   height: 100%;
-  display: flex;         // Added for flex layout
-  flex-direction: column; // Added for flex layout
-  // No border or explicit resting box-shadow defined here, per your backup's base .custom-project-card
+  display: flex;
+  flex-direction: column;
 
   &__title {
     font-family: $card-font-family;
-    font-size: $card-title-font-size;
+    font-size: $card-title-font-size; // Uses main card variable
     font-weight: bold;
-    color: $card-title-color;
+    color: $card-title-color;         // Uses main card variable
     margin-top: 0;
-    margin-bottom: $card-title-margin-bottom;
+    margin-bottom: $card-title-margin-bottom; // Uses main card variable
     line-height: 1.3;
     text-align: left;
-    transition: text-shadow 0.2s ease-out; // ADDED transition for hover
+    transition: text-shadow 0.2s ease-out;
 
-    &:hover { // ADDED independent hover
-      text-shadow: $card-title-hover-text-shadow;
+    &:hover {
+      text-shadow: $card-title-hover-text-shadow; // Uses main card variable
     }
   }
 
   &__image-container {
-    margin-bottom: $card-image-margin-bottom;
+    margin-bottom: $card-image-margin-bottom; // Uses main card variable
   }
 
   &__image {
     display: block;
     width: 100%;
     height: auto;
-    object-fit: cover; // ADDED for better image scaling
-    transition: box-shadow 0.3s ease; // From your backup
+    object-fit: cover;
+    transition: box-shadow 0.3s ease;
 
-    &:hover { // From your backup - This is the independent image hover
-      box-shadow: $card-image-hover-shadow;
+    &:hover {
+      box-shadow: $card-image-hover-shadow; // Uses main card variable
     }
   }
 
-  // Wrapper for text content (description, tech stack, metadata, secondary title)
   &__text-content {
     display: flex;
     flex-direction: column;
-    flex-grow: 1; // Allows this whole block to grow, pushing delimiter to the bottom
+    flex-grow: 1;
   }
 
   &__description {
     font-family: $card-font-family;
-    font-size: $card-description-font-size;
-    color: $card-description-color;
-    line-height: $card-description-line-height;
+    font-size: $card-description-font-size; // Uses main card variable
+    color: $card-description-color;         // Uses main card variable
+    line-height: $card-description-line-height; // Uses main card variable
     margin-top: 0;
-    margin-bottom: $card-description-margin-bottom; // Space before tech stack
+    margin-bottom: $card-description-margin-bottom; // Uses main card variable
     text-align: left;
   }
 
-  // ADDED: Tech Stack on Card
   &__tech-stack {
     font-family: $card-font-family;
-    font-size: $card-tech-stack-font-size;
-    color: $card-tech-stack-color;
-    line-height: $card-description-line-height; // Match description
+    font-size: $card-tech-stack-font-size; // Uses main card variable
+    color: $card-tech-stack-color;         // Uses main card variable
+    line-height: $card-description-line-height;
     margin-top: 0;
-    margin-bottom: $card-tech-stack-margin-bottom; // Space after tech stack
+    margin-bottom: $card-tech-stack-margin-bottom; // Uses main card variable
     text-align: left;
 
     .tech-stack-separator {
       margin: 0 0.25em;
-      color: $tech-stack-separator-color;
+      color: $tech-stack-separator-color; // Uses main card variable
     }
   }
 
-  // ADDED/KEPT: Metadata and Secondary Title on Card (styles if you use these in HTML)
-  &__metadata { // Assuming you might re-add this to the card HTML
+  &__metadata {
     font-size: 0.8rem;
     color: #777;
     margin-bottom: 8px;
     text-align: left;
   }
 
-  &__secondary-title { // Assuming you might re-add this to the card HTML
+  &__secondary-title {
     font-size: 1.1rem;
     font-weight: 600;
     color: #333;
@@ -155,51 +179,162 @@ a {
     text-align: left;
   }
 
-
   &__delimiter {
-    height: $card-delimiter-height;
-    background-color: $card-delimiter-color;
+    height: $card-delimiter-height;         // Uses main card variable
+    background-color: $card-delimiter-color; // Uses main card variable
     width: 100%;
-    margin-top: auto; // ADDED/ENSURED: Pushes delimiter to the bottom of the flex container
+    margin-top: auto;
   }
 }
 
-// --- Styles for Bootstrap Grid columns containing the cards (From your backup) ---
+// --- Styles for Bootstrap Grid columns containing the main cards (From your backup) ---
 .row > [class*="col-"] {
-  .custom-project-card {
-    height: 100%; // From your backup
-    // margin-bottom: 1px; // This was in your .custom-project-card, also applies here.
-                         // If using Bootstrap's grid `mb-4` on the column itself, this might be redundant.
+  .custom-project-card { // This rule applies to homepage cards if they are in Bootstrap cols
+    height: 100%;
   }
 }
+
+// --- Sidebar General Structure ---
+.portfolio-sidebar {
+  padding-top: 1rem; // Or adjust to match main content's top padding/margin
+  font-family: $sidebar-font-family;
+  background-color: $sidebar-background-color;
+
+  h3.sidebar-section-title {
+    font-family: $sidebar-font-family; // Or a specific serif font
+    font-size: $sidebar-section-title-font-size;
+    font-weight: 600;
+    color: $sidebar-section-title-color;
+    margin-top: $sidebar-section-title-margin-top;
+    margin-bottom: $sidebar-section-title-margin-bottom;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  .sidebar-delimiter { // This is the <hr class="sidebar-delimiter">
+    border: 1px;
+    border-top: 1px solid $sidebar-delimiter-color;
+    margin-top: $sidebar-delimiter-margin-vertical;
+    margin-bottom: $sidebar-delimiter-margin-vertical;
+  }
+}
+
+// --- About Section (Sidebar) ---
+.sidebar-about-text {
+  font-size: $sidebar-about-text-font-size;
+  color: $sidebar-about-text-color;
+  line-height: $sidebar-about-text-line-height;
+  // Add other styling like text-align if needed
+}
+
+// --- Tags Section (Sidebar) ---
+.sidebar-tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+
+  .tag-badge {
+    display: inline-block;
+    background-color: $sidebar-tag-bg-color;
+    color: $sidebar-tag-text-color;
+    padding: 0.3em 0.8em;
+    font-size: $sidebar-tag-font-size;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 4px;
+    text-decoration: none;
+
+    &:hover {
+      background-color: $sidebar-tag-hover-bg-color;
+    }
+  }
+}
+
+// --- Sidebar Project Card Styles ---
+.sidebar-project-card { // This is the <article class="sidebar-project-card">
+  margin-bottom: $sidebar-card-stack-margin-bottom; // Space between cards in the list
+  padding: $sidebar-card-internal-padding; // External padding around card content
+
+  &__title { // This is h4.sidebar-project-card__title
+    font-family: $sidebar-font-family; // Or specific serif for story titles
+    font-size: $sidebar-card-title-font-size;
+    font-weight: 600;
+    color: $sidebar-card-title-color;
+    line-height: 1.3;
+    margin-top: 0;
+    margin-bottom: $sidebar-card-title-margin-bottom;
+    transition: text-shadow 0.2s ease-out;
+
+    &:hover { // Independent hover for sidebar card title
+      text-shadow: $card-title-hover-text-shadow; // Using main card's title hover effect
+    }
+  }
+
+  &__link { // This is a.sidebar-project-card__link (for the title)
+    text-decoration: none;
+    color: inherit;
+    &:hover {
+      // text-decoration: underline; // Example hover for title link
+    }
+  }
+
+  &__image-link { // This is a.sidebar-project-card__image-link
+    display: block;
+    margin-bottom: $sidebar-card-image-container-margin-bottom;
+  }
+
+  &__image-container { // div.sidebar-project-card__image-container
+    position: relative;
+    width: 100%;
+    padding-top: 75%; // 4:3 aspect ratio
+    background-color: $sidebar-card-image-bg-placeholder;
+    overflow: hidden;
+  }
+
+  &__image { // img.sidebar-project-card__image
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: box-shadow 0.3s ease, transform 0.3s ease; // Prepare for hover
+
+    &:hover { // Independent hover for sidebar card image
+      box-shadow: $card-image-hover-shadow; // Using main card's image hover effect
+      // transform: scale(1.02); // Optional additional zoom
+    }
+  }
+
+  &__meta { // div.sidebar-project-card__meta
+    font-size: $sidebar-card-meta-font-size;
+    color: $sidebar-card-meta-color;
+    line-height: $sidebar-card-meta-line-height;
+  }
+}
+
 
 // --- Project Detail Page Styles (From your backup) ---
-// ... (other project-detail styles like .project-detail-title, .project-detail-content from your backup would go here if any)
-
-.project-detail-image-container { // From your backup
+.project-detail-image-container {
   overflow: visible;
   position: relative;
 
-  .project-detail-image { // From your backup
+  .project-detail-image {
     width: 100%;
     height: auto;
     display: block;
     position: relative;
     transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
 
-    &:hover { // From your backup
+    &:hover {
       transform: $detail-image-hover-transform;
       box-shadow: $detail-image-hover-box-shadow;
     }
   }
 }
 
-// Ensure Bootstrap's img-fluid doesn't clip the shadow (From your backup)
-// .img-fluid {
-  // No specific change needed here unless a parent is clipping - From your backup
-// }
-
-/* Tech Icons on Project Detail Page (From your backup) */
+// --- Tech Icons on Project Detail Page (From your backup) ---
 .tech-icons-container {
   .tech-icon-item {
     margin: 0.5rem;
@@ -220,8 +355,7 @@ a {
   }
 }
 
-/* Project Detail Page Text Content (Minimal additions - EXPAND AS NEEDED) */
-/* These are for the _layouts/project.html main content area */
+/* Project Detail Page Text Content (Minimal additions for Medium-like feel) */
 .project-page-article .project-content-body {
   p {
     margin-bottom: 1.25rem;
@@ -244,11 +378,10 @@ a {
       padding: 0;
     }
   }
-  // For inline code not in a pre block
-  code {
+  code { // Inline code
     font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     font-size: 0.9em;
-    background-color: #f8f9fa; // Light background for inline code
+    background-color: #f8f9fa;
     padding: 0.2em 0.4em;
     border-radius: 3px;
   }
