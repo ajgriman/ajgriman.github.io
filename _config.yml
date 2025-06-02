@@ -70,3 +70,5 @@ collections:
   projects:
     output: true
     permalink: /projects/:title/ 
+  tech_icons: # Add this new collection
+    output: false # We'll include them directly, no need for separate pages

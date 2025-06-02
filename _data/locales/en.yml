@@ -15,3 +15,12 @@ go_to_en: "English"
 # ... existing strings ...
 project_card_title_placeholder: "Project Title"
 project_card_description_placeholder: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum."
+# English translations for project page template
+project_published_on: "Published on"
+project_tech_stack_heading: "Tech:"
+project_reading_time_minute: "min read"
+project_reading_time_minutes: "min read"
+project_watch_video: "Watch Video"
+# ... other keys ...
+project_view_repo: "GitHub Repo" 
+project_view_live: "Live"         

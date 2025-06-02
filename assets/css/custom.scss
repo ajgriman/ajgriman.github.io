@@ -127,3 +127,19 @@ $card-image-hover-shadow: 0 8px 20px $card-image-hover-shadow-color; // Stronger
 .img-fluid {
   // No specific change needed here unless a parent is clipping
 }
+/* Basic styling for tech SVG icons */
+.tech-icons-container .tech-icon-item {
+  margin: 0.5rem; /* Spacing around each icon item */
+}
+
+.tech-icons-container .tech-svg-icon svg {
+  width: 32px;  /* Adjust size as needed */
+  height: 32px; /* Adjust size as needed */
+  fill: #333; /* Default to dark grey/black, can be overridden */
+  vertical-align: middle;
+}
+
+.tech-icons-container .tech-icon-label {
+  font-size: 0.8rem;
+  color: #555;
+}

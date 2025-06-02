@@ -15,3 +15,11 @@ go_to_en: "English"
 # ... existing strings ...
 project_card_title_placeholder: "Título del Proyecto"
 project_card_description_placeholder: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum." # Placeholder, translate as needed
+# Spanish translations for project page template
+project_published_on: "Publicado el"
+project_tech_stack_heading: "Tecnologías:"
+project_reading_time_minute: "min de lectura"
+# **1. EXPLANATION & CONTENT FOR `_data/locales/` FILES**
+# ... other keys ...
+project_view_repo: "GitHub Repo"
+project_view_live: "Sitio en Vivo"      
