@@ -8,7 +8,7 @@ $card-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helve
 $card-background-color: transparent;
 $card-title-color: #333333;
 $card-description-color: #555555;
-$card-image-hover-shadow-color: rgba(0, 0, 0, 0.25);
+$card-image-hover-shadow-color: rgba(0, 0, 0, 0.498);
 $card-delimiter-color: #504f4e89; // Your orange-like delimiter for main cards
 
 // Spacing & Sizing (Main Homepage Cards)
@@ -156,6 +156,7 @@ a {
     margin-top: 0;
     margin-bottom: $card-tech-stack-margin-bottom; // Uses main card variable
     text-align: left;
+    transition: text-shadow 0.2s ease-out;
 
     .tech-stack-separator {
       margin: 0 0.25em;
@@ -289,7 +290,7 @@ a {
     width: 100%;
     padding-top: 75%; // 4:3 aspect ratio
     background-color: $sidebar-card-image-bg-placeholder;
-    overflow: hidden;
+    // overflow: hidden;
   }
 
   &__image { // img.sidebar-project-card__image
@@ -299,11 +300,12 @@ a {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: box-shadow 0.3s ease, transform 0.3s ease; // Prepare for hover
+    transition: box-shadow 0.3s ease;
+    // transition: box-shadow 0.3s ease, transform 0.3s ease; // Prepare for hover
 
     &:hover { // Independent hover for sidebar card image
       box-shadow: $card-image-hover-shadow; // Using main card's image hover effect
-      // transform: scale(1.02); // Optional additional zoom
+      //transform: scale(1.02); // Optional additional zoom
     }
   }
 

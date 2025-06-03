@@ -4,7 +4,7 @@
 {%- if p -%}
 <a href="{{ p.url | relative_url }}" class="custom-project-card-link">
     <div class="custom-project-card">
-        <h3 class="custom-project-card__title">{{ p.title | default: t.project_card_title_placeholder }}</h3>
+        <h3 class="custom-project-card__title text-center">{{ p.title | default: t.project_card_title_placeholder }}</h3>
 
         {%- if p.card_image_path -%}
         <div class="custom-project-card__image-container">
@@ -21,9 +21,9 @@
         {%- endif -%}
 
         <div class="custom-project-card__text-content">
-            <p class="custom-project-card__description">
+            <!-- <p class="custom-project-card__description">
                 {{ p.short_description | default: t.project_card_description_placeholder | truncatewords: 20 }}
-            </p>
+            </p> -->
 
             {%- if p.tech_stack and p.tech_stack.size > 0 -%}
             <p class="custom-project-card__tech-stack">

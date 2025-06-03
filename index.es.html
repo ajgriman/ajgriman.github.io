@@ -8,7 +8,7 @@ title: "Página de Inicio ES" # Or your preferred Spanish title for browser tab
 {%- assign t = site.data.locales[site.active_lang] -%}
 
 <div class="container-fluid py-4">
-    <h1 class="mb-4 text-center">{{ t.homepage_title | default: "Mis Proyectos" }}</h1>
+    <!-- <h1 class="mb-4 text-center">{{ t.homepage_title | default: "Mis Proyectos" }}</h1> -->
 
     <div class="row gx-4" id="project-grid"> {%- comment %} Consider unique ID if Masonry JS targets it {% endcomment %}
       {%- assign projects_to_display = site.projects | where: "lang", "es" -%}

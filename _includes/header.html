@@ -5,16 +5,16 @@ And that site.active_lang is set by jekyll-polyglot (e.g., "en", "es")
 {%- endcomment -%}
 {%- assign t = site.data.locales[site.active_lang] -%}
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{{ '/' | relative_url }}">{{ t.site_title | default: site.title }}</a>
+        <a class="navbar-brand fw-bold" href="{{ '/' | relative_url }}">{{ t.site_title | default: site.title }}</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ '/' | relative_url }}">{{ t.navbar_home |
                         default: "Home" }}</a>
                 </li>
@@ -23,7 +23,7 @@ And that site.active_lang is set by jekyll-polyglot (e.g., "en", "es")
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">{{ t.navbar_about | default: "About" }}</a>
-                </li>
+                </li> -->
                 <!-- Example Dropdown
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -37,7 +37,7 @@ And that site.active_lang is set by jekyll-polyglot (e.g., "en", "es")
         -->
             </ul>
             <!-- Language Switcher (Revised based on Polyglot Docs for page_id) -->
-            <ul class="navbar-nav">
+            <ul class="navbar-nav fw-light fs-6">
                 {% for lang_code in site.languages %}
                 {% if lang_code == site.active_lang %}
                 <li class="nav-item">
