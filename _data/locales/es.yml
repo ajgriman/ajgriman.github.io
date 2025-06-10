@@ -32,7 +32,7 @@ card_secondary_title_placeholder: "Explorando el Impacto" # Example
 card_year_ago: "año atrás" # Singular (or "hace 1 año")
 # ... existing keys ...
 sidebar_about_title: "Acerca de"
-sidebar_about_content: "¡Bienvenido a mi portafolio! 🚀 Como desarrollador apasionado, me dedico a crear soluciones web que dejan huella y a explorar nuevas tecnologías. Siempre en busca de innovación, siempre superando límites."
+sidebar_about_content: "¡Bienvenido a mi portafolio! 🚀 Me dedico a crear soluciones web que dejan huella y a explorar nuevas tecnologías. Siempre en busca de innovación, siempre superando límites."
 read_more: "Leer más"
 sidebar_tags_title: "Etiquetas"
 sidebar_popular_title: "Proyectos Recientes"
@@ -41,7 +41,7 @@ no_projects_sidebar: "No hay proyectos recientes para mostrar."
 about_github: "Perfil de GitHub"
 about_linkedin: "Perfil de LinkedIn"
 about_cta_title: "Trabajemos Juntos"
-about_cta_text: "Listo para dar vida a tus ideas con tecnología de vanguardia y soluciones innovadoras."
+about_cta_text: "Listo para dar vida a tus ideas"
 about_contact_btn: "Contáctame"
 about_page: "/es/about"
 # ... tus otras claves ...

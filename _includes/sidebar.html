@@ -5,39 +5,62 @@
   {%- assign t = site.data.locales[site.active_lang] -%}
 
   <!-- ======================= SECCIÓN "ABOUT" CON LÓGICA CONDICIONAL ======================= -->
+  <!-- _includes/sidebar.html -->
+
   <section class="sidebar-section sidebar-about">
+
+    {%- comment -%} Oculta el título y el párrafo en las páginas "About" y de proyectos. {%- endcomment -%}
+    {%- if page.rel-lang-group != 'about' and page.type != 'projects' -%}
     <h3 class="sidebar-section-title">{{ t.sidebar_about_title | default: "About" }}</h3>
-    
+
     <p class="sidebar-about-text">
       {{ t.sidebar_about_content | default: "This is a brief about section." | truncatewords: 30 }}
     </p>
-  
-    {%- comment -%}
-      LOGICA CONDICIONAL PARA EL BANNER
-    {%- endcomment -%}
-    {%- if page.rel-lang-group == 'about' -%}
-      {%- comment -%} CASO A: En la página "About", enlaza a Inicio. {%- endcomment -%}
-      {%- assign cta_url = '/' | relative_url -%}
-      {%- assign cta_text = t.sidebar_back_to_home_text | default: "Ready to see my work?" -%}
-      {%- assign cta_btn_text = t.sidebar_back_to_home_btn | default: "View Projects" -%}
+    {%- endif -%}
+
+    {%- comment -%} LÓGICA CONDICIONAL DE 3 ESTADOS PARA EL BANNER PRINCIPAL {%- endcomment -%}
+    {%- if page.type == 'projects' -%}
+    {%- comment -%} CASO A: En una página de proyecto. Enlaza al índice de proyectos. {%- endcomment -%}
+    {%- assign projects_pages = site.pages | where: "rel-lang-group", "projects-index" -%}
+    {%- assign projects_index_page = projects_pages | where: "lang", site.active_lang | first -%}
+    {%- if projects_index_page -%}
+    {%- assign cta_url = projects_index_page.url | relative_url -%}
+    {%- assign cta_btn_text = t.sidebar_back_to_projects_btn | default: "Back to Projects" -%}
+    {%- assign show_cta_text = false -%}
+    {%- endif -%}
+    {%- elsif page.rel-lang-group == 'about' -%}
+    {%- comment -%} CASO B: En la página "About". Enlaza a la página de inicio. {%- endcomment -%}
+    {%- assign cta_url = '/' | relative_url -%}
+    {%- assign cta_text = t.sidebar_back_to_home_text | default: "Ready to see my work?" -%}
+    {%- assign cta_btn_text = t.sidebar_back_to_home_btn | default: "View Projects" -%}
+    {%- assign show_cta_text = true -%}
     {%- else -%}
-      {%- comment -%} CASO B: No en "About", enlaza a "About". {%- endcomment -%}
-      {%- assign about_pages = site.pages | where: "rel-lang-group", "about" -%}
-      {%- assign current_about_page = about_pages | where: "lang", site.active_lang | first -%}
-      {%- if current_about_page -%}
-        {%- assign cta_url = current_about_page.url | relative_url -%}
-        {%- assign cta_text = t.sidebar_about_banner_text | default: "Want to know my full story?" -%}
-        {%- assign cta_btn_text = t.learn_more_btn | default: "Learn my story" -%}
-      {%- endif -%}
+    {%- comment -%} CASO C: En cualquier otra página. Enlaza a "About". {%- endcomment -%}
+    {%- assign about_pages = site.pages | where: "rel-lang-group", "about" -%}
+    {%- assign current_about_page = about_pages | where: "lang", site.active_lang | first -%}
+    {%- if current_about_page -%}
+    {%- assign cta_url = current_about_page.url | relative_url -%}
+    {%- assign cta_text = t.sidebar_about_banner_text | default: "Want to know my full story?" -%}
+    {%- assign cta_btn_text = t.learn_more_btn | default: "Learn my story" -%}
+    {%- assign show_cta_text = true -%}
     {%- endif -%}
-  
-    {%- comment -%} Renderiza el banner usando las variables definidas arriba. {%- endcomment -%}
+    {%- endif -%}
+
+    {%- comment -%} Renderiza el banner principal. {%- endcomment -%}
     {%- if cta_url -%}
-      <div class="sidebar-cta-banner">
-        <!-- <p>{{ cta_text }}</p> -->
-        <a href="{{ cta_url }}" class="sidebar-action-btn">{{ cta_btn_text }}</a>
-      </div>
+    <div class="sidebar-cta-banner">
+      <!-- {%- if show_cta_text -%}
+      <p>{{ cta_text }}</p>
+      {%- endif -%} -->
+      <a href="{{ cta_url }}" class="sidebar-action-btn">{{ cta_btn_text }}</a>
+      {%- if page.layout == 'project' -%}
+      <br><br><a href="{{ '/' | relative_url }}" class="sidebar-action-btn">
+        {{ t.sidebar_back_to_home_btn | default: "Go to Home" }}
+      </a>
+      {%- endif -%}
+    </div>
     {%- endif -%}
+
   </section>
 
   <hr class="sidebar-delimiter">
@@ -45,16 +68,16 @@
   <!-- ======================= SECCIÓN "TAGS" ======================= -->
   {%- assign all_tags = "" | split: "," -%}
   {%- for project_for_tags in site.projects -%}
-    {%- if project_for_tags.lang == site.active_lang or project_for_tags.lang == site.default_lang -%}
-      {%- if project_for_tags.tags -%}
-        {%- for tag in project_for_tags.tags -%}
-          {%- assign all_tags = all_tags | push: tag | uniq -%}
-        {%- endfor -%}
-      {%- endif -%}
-    {%- endif -%}
+  {%- if project_for_tags.lang == site.active_lang or project_for_tags.lang == site.default_lang -%}
+  {%- if project_for_tags.tags -%}
+  {%- for tag in project_for_tags.tags -%}
+  {%- assign all_tags = all_tags | push: tag | uniq -%}
+  {%- endfor -%}
+  {%- endif -%}
+  {%- endif -%}
   {%- endfor -%}
   {%- assign sorted_tags = all_tags | sort_natural -%}
-  
+
   {% if sorted_tags.size > 0 %}
   <section class="sidebar-section sidebar-tags">
     <h3 class="sidebar-section-title">{{ t.sidebar_tags_title | default: "Tags" }}</h3>
@@ -69,24 +92,27 @@
 
   <!-- ======================= SECCIÓN "PROYECTOS RECIENTES" ======================= -->
   <section class="sidebar-section sidebar-popular-projects">
-    <h3 class="sidebar-section-title">{{ t.sidebar_popular_title | default: "Recent Projects" }}</h3>
-    
-    {%- assign sidebar_projects_lang_specific = site.projects | where: "lang", site.active_lang | sort: "date" | reverse -%}
+    <!-- <h3 class="sidebar-section-title text-center">{{ t.sidebar_popular_title | default: "Recent Projects" }}</h3> -->
+
+    {%- assign sidebar_projects_lang_specific = site.projects | where: "lang", site.active_lang | sort: "date" | reverse
+    -%}
     {%- assign sidebar_projects_to_display = sidebar_projects_lang_specific -%}
-  
+
     {%- if sidebar_projects_lang_specific.size == 0 and site.active_lang != site.default_lang -%}
-      {%- assign sidebar_projects_default_lang = site.projects | where: "lang", site.default_lang | sort: "date" | reverse -%}
-      {%- assign sidebar_projects_to_display = sidebar_projects_default_lang -%}
-      {%- if sidebar_projects_default_lang.size > 0 -%}
-        <p class="text-muted small">({{ t.showing_default_lang_projects | default: "Showing projects in default language." }})</p>
-      {%- endif -%}
+    {%- assign sidebar_projects_default_lang = site.projects | where: "lang", site.default_lang | sort: "date" | reverse
+    -%}
+    {%- assign sidebar_projects_to_display = sidebar_projects_default_lang -%}
+    {%- if sidebar_projects_default_lang.size > 0 -%}
+    <p class="text-muted small">({{ t.showing_default_lang_projects | default: "Showing projects in default language."
+      }})</p>
     {%- endif -%}
-  
+    {%- endif -%}
+
     {% for project_item_sidebar in sidebar_projects_to_display limit:2 %}
-      {% include sidebar_project_card.html project=project_item_sidebar %}
+    {% include sidebar_project_card.html project=project_item_sidebar %}
     {% else %}
-      <p>{{ t.no_projects_sidebar | default: "No recent projects to show." }}</p>
+    <p>{{ t.no_projects_sidebar | default: "No recent projects to show." }}</p>
     {% endfor %}
   </section>
-  
+
 </aside>
