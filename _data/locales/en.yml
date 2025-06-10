@@ -48,3 +48,6 @@ about_page: "/en/about"
 # ... tus otras claves ...
 sidebar_about_banner_text: "Want to know my full story?"
 learn_more_btn: "Learn my story"
+# ... tus otras claves ...
+sidebar_back_to_home_text: "Ready to see my work?"
+sidebar_back_to_home_btn: "View Projects"

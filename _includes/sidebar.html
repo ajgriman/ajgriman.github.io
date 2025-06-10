@@ -4,6 +4,7 @@
 
   {%- assign t = site.data.locales[site.active_lang] -%}
 
+  <!-- ======================= SECCIÓN "ABOUT" CON LÓGICA CONDICIONAL ======================= -->
   <section class="sidebar-section sidebar-about">
     <h3 class="sidebar-section-title">{{ t.sidebar_about_title | default: "About" }}</h3>
     
@@ -11,21 +12,37 @@
       {{ t.sidebar_about_content | default: "This is a brief about section." | truncatewords: 30 }}
     </p>
   
-    {%- assign about_pages = site.pages | where: "rel-lang-group", "about" -%}
-    {%- assign current_about_page = about_pages | where: "lang", site.active_lang | first -%}
+    {%- comment -%}
+      LOGICA CONDICIONAL PARA EL BANNER
+    {%- endcomment -%}
+    {%- if page.rel-lang-group == 'about' -%}
+      {%- comment -%} CASO A: En la página "About", enlaza a Inicio. {%- endcomment -%}
+      {%- assign cta_url = '/' | relative_url -%}
+      {%- assign cta_text = t.sidebar_back_to_home_text | default: "Ready to see my work?" -%}
+      {%- assign cta_btn_text = t.sidebar_back_to_home_btn | default: "View Projects" -%}
+    {%- else -%}
+      {%- comment -%} CASO B: No en "About", enlaza a "About". {%- endcomment -%}
+      {%- assign about_pages = site.pages | where: "rel-lang-group", "about" -%}
+      {%- assign current_about_page = about_pages | where: "lang", site.active_lang | first -%}
+      {%- if current_about_page -%}
+        {%- assign cta_url = current_about_page.url | relative_url -%}
+        {%- assign cta_text = t.sidebar_about_banner_text | default: "Want to know my full story?" -%}
+        {%- assign cta_btn_text = t.learn_more_btn | default: "Learn my story" -%}
+      {%- endif -%}
+    {%- endif -%}
   
-    {%- if current_about_page -%}
+    {%- comment -%} Renderiza el banner usando las variables definidas arriba. {%- endcomment -%}
+    {%- if cta_url -%}
       <div class="sidebar-cta-banner">
-        <p>{{ t.sidebar_about_banner_text | default: "Want to know my full story?" }}</p>
-        <a href="{{ current_about_page.url | relative_url }}" class="sidebar-action-btn">
-          {{ t.learn_more_btn | default: "Learn my story" }}
-        </a>
+        <!-- <p>{{ cta_text }}</p> -->
+        <a href="{{ cta_url }}" class="sidebar-action-btn">{{ cta_btn_text }}</a>
       </div>
     {%- endif -%}
   </section>
-  
+
   <hr class="sidebar-delimiter">
-  
+
+  <!-- ======================= SECCIÓN "TAGS" ======================= -->
   {%- assign all_tags = "" | split: "," -%}
   {%- for project_for_tags in site.projects -%}
     {%- if project_for_tags.lang == site.active_lang or project_for_tags.lang == site.default_lang -%}
@@ -49,7 +66,8 @@
   </section>
   <hr class="sidebar-delimiter">
   {% endif %}
-  
+
+  <!-- ======================= SECCIÓN "PROYECTOS RECIENTES" ======================= -->
   <section class="sidebar-section sidebar-popular-projects">
     <h3 class="sidebar-section-title">{{ t.sidebar_popular_title | default: "Recent Projects" }}</h3>
     
@@ -71,7 +89,4 @@
     {% endfor %}
   </section>
   
-  <!-- La etiqueta <hr> de abajo la moví aquí para que esté dentro del aside -->
-  <hr class="sidebar-delimiter">
-
 </aside>

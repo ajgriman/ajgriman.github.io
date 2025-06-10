@@ -47,3 +47,6 @@ about_page: "/es/about"
 # ... tus otras claves ...
 sidebar_about_banner_text: "¿Quieres conocer mi historia completa?"
 learn_more_btn: "Conocer mi historia"
+# ... tus otras claves ...
+sidebar_back_to_home_text: "¿Listo para ver mis proyectos?"
+sidebar_back_to_home_btn: "Ver Proyectos"
