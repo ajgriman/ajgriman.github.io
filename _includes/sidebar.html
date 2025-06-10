@@ -14,7 +14,7 @@
     <h3 class="sidebar-section-title">{{ t.sidebar_about_title | default: "About" }}</h3>
 
     <p class="sidebar-about-text">
-      {{ t.sidebar_about_content | default: "This is a brief about section." | truncatewords: 30 }}
+      {{ t.sidebar_about_content | default: "This is a brief about section." }}
     </p>
     {%- endif -%}
 
@@ -94,12 +94,22 @@
   <section class="sidebar-section sidebar-popular-projects">
     <!-- <h3 class="sidebar-section-title text-center">{{ t.sidebar_popular_title | default: "Recent Projects" }}</h3> -->
 
-    {%- assign sidebar_projects_lang_specific = site.projects | where: "lang", site.active_lang | sort: "date" | reverse
+    {%- comment -%} 1. Busca todos los proyectos en el idioma activo, ordenados por fecha. {%- endcomment -%}
+    {%- assign sidebar_projects_lang_specific = site.projects
+    | where: "lang", site.active_lang
+    | sort: "date"
+    | reverse
     -%}
+
     {%- assign sidebar_projects_to_display = sidebar_projects_lang_specific -%}
 
+    {%- comment -%} 2. Si no hay proyectos en el idioma activo, busca en el idioma por defecto como fallback. {%-
+    endcomment -%}
     {%- if sidebar_projects_lang_specific.size == 0 and site.active_lang != site.default_lang -%}
-    {%- assign sidebar_projects_default_lang = site.projects | where: "lang", site.default_lang | sort: "date" | reverse
+    {%- assign sidebar_projects_default_lang = site.projects
+    | where: "lang", site.default_lang
+    | sort: "date"
+    | reverse
     -%}
     {%- assign sidebar_projects_to_display = sidebar_projects_default_lang -%}
     {%- if sidebar_projects_default_lang.size > 0 -%}
@@ -108,7 +118,14 @@
     {%- endif -%}
     {%- endif -%}
 
-    {% for project_item_sidebar in sidebar_projects_to_display limit:2 %}
+
+    {%- comment -%} 3. Filtra la lista para EXCLUIR el proyecto actual que se está viendo. {%- endcomment -%}
+    {%- assign projects_without_current = sidebar_projects_to_display
+    | where_exp: "item", "item.url != page.url"
+    -%}
+
+    {%- comment -%} 4. Itera sobre la lista filtrada y muestra un máximo de 2 proyectos. {%- endcomment -%}
+    {% for project_item_sidebar in projects_without_current limit:2 %}
     {% include sidebar_project_card.html project=project_item_sidebar %}
     {% else %}
     <p>{{ t.no_projects_sidebar | default: "No recent projects to show." }}</p>
