@@ -91,7 +91,7 @@ And that site.active_lang is set by jekyll-polyglot (e.g., "en", "es")
                     {%- endunless -%}
 
                     {%- if target_url -%}
-                    <a class="nav-link" {% static_href %}href="{{ target_url }}" {% endstatic_href %}>
+                    <a class="nav-link" href="{{ target_url }}">
                         {{ site.data.locales[lang_code].lang_name | default: lang_code | upcase }}
                     </a>
                     {%- else -%}
