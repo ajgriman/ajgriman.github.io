@@ -7,7 +7,7 @@ layout: default # Assumes your main layout provides header, footer, and Bootstra
         <div class="col-lg-8">
 
             <article class="project-page-article">
-                <header class="project-header mb-4 text-lg-start text-center"> 
+                <header class="project-header mb-4 text-lg-start text-center">
                     <h1 class="project-title display-5 fw-bold mb-3">{{ page.title }}</h1>
                     {% if page.short_description %}
                     <p class="project-short-description fs-5 text-muted">{{ page.short_description }}</p>
@@ -145,9 +145,11 @@ layout: default # Assumes your main layout provides header, footer, and Bootstra
                 {% comment %} --- END VIDEO EMBED SECTION --- {% endcomment %}
 
                 {% comment %} --- BUTTON SECTION --- {% endcomment %}
-                {% if page.repo_url or page.live_url %}
+                {% assign repo_stripped = page.repo_url | strip %}
+                {% assign live_stripped = page.live_url | strip %}
+                {% if repo_stripped != "" or live_stripped != "" %}
                 <section class="project-links my-5">
-                    {% if page.live_url %}
+                    {% if live_stripped != "" %}
                     <div class="d-grid gap-2 mb-3">
                         <a href="{{ page.live_url }}" class="btn btn-outline-dark btn-lg" target="_blank"
                             rel="noopener noreferrer">
@@ -156,7 +158,7 @@ layout: default # Assumes your main layout provides header, footer, and Bootstra
                         </a>
                     </div>
                     {% endif %}
-                    {% if page.repo_url %}
+                    {% if repo_stripped != "" %}
                     <div class="d-grid gap-2">
                         <a href="{{ page.repo_url }}" class="btn btn-outline-dark btn-lg" target="_blank"
                             rel="noopener noreferrer">

@@ -1,0 +1,302 @@
+Jekyll Project Context Report
+Generated at: Mon Jun  9 06:40:06 PM -04 2025
+
+====================================
+
+===== DIRECTORY STRUCTURE =====
+Top-level directories:
+assets/
+_data/
+es/
+_includes/
+_layouts/
+_plugins/
+_projects/
+scripts/
+_site/
+_tech_icons/
+
+_layouts content:
+total 24
+-rw-r--r-- 1 code code  4422 Jun  9 18:27 about.html
+-rw-r--r-- 1 code code  1702 Jun  1 07:48 default.html
+-rw-r--r-- 1 code code 10168 Jun  9 17:56 project.html
+
+_data content:
+total 4
+drwxr-xr-x 2 code code 4096 May 22 10:40 locales
+
+Includes content:
+
+Pages content:
+No _pages directory
+
+====================================
+
+===== _CONFIG.YML =====
+
+title: Grimán DevWorks
+email: griman@gmail.com
+description: >- # this means to ignore newlines until "baseurl:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+# twitter_username: jekyllrb
+github_username:  ajgriman
+
+# Build settings
+theme: null
+plugins:
+  - jekyll-feed
+  - jekyll-polyglot
+  - jekyll-seo-tag
+
+languages: ["en", "es"]
+default_lang: "en"
+exclude_from_localization: ["assets/", "scripts/"] # Add "admin/" if you have it
+
+polyglot:
+  default_lang_in_url: false 
+  parallel_localization: false 
+  # relative_permalinks: false
+  pages_mode: filename 
+collections:
+  projects:
+
+====================================
+
+===== LAYOUT FILES =====
+\n--- DEFAULT.HTML ---
+<!doctype html>
+<html lang="{{ site.active_lang | default: site.default_lang }}">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ site.data.locales[site.active_lang].site_title | default: site.title }} - {{ page.title | default:
+    site.data.locales[site.active_lang].homepage_title }}</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+  {% feed_meta %} <!-- If you plan to have a blog/feed -->
+  {% seo %} <!-- If using jekyll-seo-tag plugin -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  {% include header.html %}
+
+  <div class="container-fluid mt-4">
+    <div class="row">
+      <div class="col-md-8 col-lg-9"> <!-- Main Content Column -->
+        {{ content }}
+      </div>
+      <div class="col-md-4 col-lg-3"> <!-- Sidebar Column -->
+        {% include sidebar.html %}
+      </div>
+    </div>
+  </div>
+
+
+  {% include footer.html %}
+  <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+  <script src="{{ '/assets/js/custom.js' | relative_url }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{{ '/assets/js/custom.js' | relative_url }}"></script>
+</body>
+
+\n--- ABOUT.HTML ---
+---
+layout: default
+---
+<div class="container mt-4 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <article class="project-page-article">
+                <header class="project-header mb-4 text-lg-start text-center">
+                    <h1 class="project-title display-5 fw-bold mb-3">{{ page.title }}</h1>
+                    {% if page.short_description %}
+                    <p class="project-short-description fs-5 text-muted">{{ page.short_description }}</p>
+                    {% endif %}
+                </header>
+
+                {% if page.image_path %}
+                <figure class="project-primary-image mb-4">
+                    <img src="{{ page.image_path }}" alt="{{ page.title }} primary image"
+                        class="img-fluid rounded shadow-sm">
+                </figure>
+                {% endif %}
+
+                <section class="project-content-body fs-5 lh-lg">
+                    {{ content }}
+                </section>
+
+                {% if page.image_path_alt %}
+                <figure class="project-alt-image my-4">
+                    <img src="{{ page.image_path_alt }}" alt="{{ page.title }} alternative image"
+                        class="img-fluid rounded shadow-sm">
+                </figure>
+                {% endif %}
+
+                {% if page.tech_stack and page.tech_stack.size > 0 %}
+                <section class="project-tech-stack-full my-5 py-3">
+                    <h3 class="h5 mb-3 text-center text-lg-start">{{
+                        site.data.locales[site.active_lang].project_tech_stack_heading | default: "Technologies I Use"
+                        }}
+                    </h3>
+                    <div
+                        class="d-flex flex-wrap justify-content-center justify-content-lg-start align-items-center tech-icons-container">
+
+====================================
+
+===== ABOUT PAGES =====
+\n--- about.markdown ---
+---
+layout: about
+lang: en
+page_id: about_page
+title: "About me"
+image_path: "https://ik.imagekit.io/rkdscdtap/projects/rails-watch-list2.png?updatedAt=1749384855468"
+image_path_alt: "https://ik.imagekit.io/rkdscdtap/projects/rails-watch-list3.png?updatedAt=1749384880152"
+tech_stack: ["Ruby On Rails", "Ruby", "JavaScript", "Bootstrap", "PostgreSQL"]
+repo_url: "https://github.com/ajgriman"
+linkedin_url: "https://www.linkedin.com/in/grimandevworks/"permalink: /about/
+---
+
+This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+
+You can find the source code for Minima at GitHub:
+[jekyll][jekyll-organization] /
+[minima](https://github.com/jekyll/minima)
+
+You can find the source code for Jekyll at GitHub:
+[jekyll][jekyll-organization] /
+[jekyll](https://github.com/jekyll/jekyll)
+
+
+[jekyll-organization]: https://github.com/jekyll
+
+
+\n--- about_es.markdown ---
+---
+layout: about
+lang: es
+page_id: about_page
+title: "About me"
+image_path: "https://ik.imagekit.io/rkdscdtap/projects/rails-watch-list2.png?updatedAt=1749384855468"
+image_path_alt: "https://ik.imagekit.io/rkdscdtap/projects/rails-watch-list3.png?updatedAt=1749384880152"
+tech_stack: ["Ruby On Rails", "Ruby", "JavaScript", "Bootstrap", "PostgreSQL"]
+repo_url: "https://github.com/ajgriman"
+linkedin_url: "https://www.linkedin.com/in/grimandevworks/"permalink: /about/
+---
+
+This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+
+You can find the source code for Minima at GitHub:
+[jekyll][jekyll-organization] /
+[minima](https://github.com/jekyll/minima)
+
+You can find the source code for Jekyll at GitHub:
+[jekyll][jekyll-organization] /
+[jekyll](https://github.com/jekyll/jekyll)
+
+
+[jekyll-organization]: https://github.com/jekyll
+
+
+
+====================================
+
+===== LOCALIZATION FILES =====
+\n--- locales/en.yml ---
+site_title: "Grimán DevWorks"
+lang_name: "English"
+homepage_title: "Homepage EN"
+sidebar_title: "Sidebar"
+
+navbar_home: "Home"
+navbar_projects: "Projects"
+navbar_about: "About"
+# navbar_more: "More"
+# navbar_action: "Action"
+# navbar_another_action: "Another Action"
+go_to_es: "Español"
+go_to_en: "English"
+
+# ... existing strings ...
+project_card_title_placeholder: "Project Title"
+project_card_description_placeholder: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum."
+# English translations for project page template
+project_published_on: "Published on"
+project_tech_stack_heading: "Tech:"
+project_reading_time_minute: "min read"
+project_reading_time_minutes: "min read"
+project_watch_video: "Watch Video"
+# ... other keys ...
+project_view_repo: "GitHub Repo" 
+project_view_live: "Live"         
+
+# ... other keys ...
+card_this_year: "This year"
+card_years_ago: "years ago"
+card_secondary_title_placeholder: "Exploring the Impact" # Example
+# ... other keys ...
+card_year_ago: "year ago" # Singular
+# ... existing keys ...
+sidebar_about_title: "About"
+sidebar_about_content: "Welcome to my portfolio! I'm a passionate developer focused on creating impactful web solutions and exploring new technologies." # Example
+read_more: "Read more"
+sidebar_tags_title: "Tags"
+sidebar_popular_title: "Recent Projects"
+# showing_default_lang_projects: "Showing projects in default language." # Already added previously
+no_projects_sidebar: "No recent projects to show."
+about_github: "GitHub Profile"
+about_linkedin: "LinkedIn Profile"\n--- locales/es.yml ---
+site_title: "Grimán DevWorks" 
+lang_name: "Español"
+homepage_title: "Página de Inicio ES"
+sidebar_title: "Barra Lateral"
+
+navbar_home: "Inicio"
+navbar_projects: "Proyectos"
+navbar_about: "Acerca de"
+# navbar_more: "Más"
+# navbar_action: "Acción"
+# navbar_another_action: "Otra Acción"
+go_to_es: "Español"
+go_to_en: "English"
+
+# ... existing strings ...
+project_card_title_placeholder: "Título del Proyecto"
+project_card_description_placeholder: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum." # Placeholder, translate as needed
+# Spanish translations for project page template
+project_published_on: "Publicado el"
+project_tech_stack_heading: "Tecnologías:"
+project_reading_time_minute: "min de lectura"
+# **1. EXPLANATION & CONTENT FOR `_data/locales/` FILES**
+# ... other keys ...
+project_view_repo: "GitHub Repo"
+project_view_live: "Sitio en Vivo"      
+
+# ... other keys ...
+card_this_year: "Este año"
+card_years_ago: "años atrás" # or "hace años"
+card_secondary_title_placeholder: "Explorando el Impacto" # Example
+# ... other keys ...
+card_year_ago: "año atrás" # Singular (or "hace 1 año")
+# ... existing keys ...
+sidebar_about_title: "Acerca de"
+sidebar_about_content: "¡Bienvenido a mi portafolio! Soy un desarrollador apasionado enfocado en crear soluciones web impactantes y explorar nuevas tecnologías." # Example
+read_more: "Leer más"
+sidebar_tags_title: "Etiquetas"
+sidebar_popular_title: "Proyectos Recientes"
+# showing_default_lang_projects: "Mostrando proyectos en el idioma predeterminado." # Already added previously
+no_projects_sidebar: "No hay proyectos recientes para mostrar."
+about_github: "Perfil de GitHub"
+about_linkedin: "Perfil de LinkedIn"
+
+===== CONTEXT COLLECTION COMPLETE =====

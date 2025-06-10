@@ -19,4 +19,4 @@ The challenge? Build a humorous coaching app where users submit life questions a
 
 I engineered a minimalist Rails MVC flow: a Bootstrap-styled form at `/ask` captures questions, while `/answer` processes inputs through response logic (e.g., "Great!" for work commitment, snarky replies for questions ending in "?"). Key integrations included Capybara system tests with Headless Chrome for automated UI validation and ERB templates for seamless question-answer rendering.  
 
-Leveraging Ruby on Rails 7+, Bootstrap 5, and Selenium WebDriver, the app achieved <200ms response times and 100% test coverage. The project honed my RESTful routing expertise.
+Leveraging Ruby on Rails 7+, Bootstrap 5, and Selenium WebDriver, the app achieved <200ms response times and 100% test coverage. The project trained my RESTful routing expertise.

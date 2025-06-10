@@ -19,4 +19,4 @@ El desafío: crear una app de coaching humorística donde usuarios enviaran preg
 
 Desarrollé un flujo MVC minimalista en Rails: un formulario con Bootstrap en `/ask` captura preguntas, mientras `/answer` procesa entradas mediante lógica de respuestas (ej: "¡Genial!" por compromiso laboral, réplicas irónicas para preguntas con "?"). Integré pruebas Capybara con Headless Chrome para validación automatizada de UI y plantillas ERB para renderizar preguntas-respuestas.  
 
-Usando Ruby on Rails 7+, Bootstrap 5 y Selenium WebDriver, la app logró respuestas en <200ms y 100% de cobertura de pruebas. El proyecto perfeccionó mi dominio de rutas RESTful.
+Usando Ruby on Rails 7+, Bootstrap 5 y Selenium WebDriver, la app logró respuestas en <200ms y 100% de cobertura de pruebas. El proyecto entreno mi dominio de rutas RESTful.

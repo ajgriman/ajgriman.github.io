@@ -1,33 +1,43 @@
-{%- assign t = site.data.locales[site.active_lang] -%}
+<!-- _includes/sidebar.html -->
 
 <aside class="portfolio-sidebar">
 
+  {%- assign t = site.data.locales[site.active_lang] -%}
+
   <section class="sidebar-section sidebar-about">
     <h3 class="sidebar-section-title">{{ t.sidebar_about_title | default: "About" }}</h3>
+    
     <p class="sidebar-about-text">
       {{ t.sidebar_about_content | default: "This is a brief about section." | truncatewords: 30 }}
-      {%- assign about_page_key = "about_page" -%}
-      {%- assign about_page_translation = site.translations[about_page_key][site.active_lang] | default:
-      (site.translations[about_page_key][site.default_lang]) -%}
-      {%- if about_page_translation.url -%}
-      <a href="{{ about_page_translation.url | relative_url }}">{{ t.read_more | default: "Read more" }} →</a>
-      {%- endif -%}
     </p>
+  
+    {%- assign about_pages = site.pages | where: "rel-lang-group", "about" -%}
+    {%- assign current_about_page = about_pages | where: "lang", site.active_lang | first -%}
+  
+    {%- if current_about_page -%}
+      <div class="sidebar-cta-banner">
+        <p>{{ t.sidebar_about_banner_text | default: "Want to know my full story?" }}</p>
+        <a href="{{ current_about_page.url | relative_url }}" class="sidebar-action-btn">
+          {{ t.learn_more_btn | default: "Learn my story" }}
+        </a>
+      </div>
+    {%- endif -%}
   </section>
+  
   <hr class="sidebar-delimiter">
-
+  
   {%- assign all_tags = "" | split: "," -%}
   {%- for project_for_tags in site.projects -%}
-  {%- if project_for_tags.lang == site.active_lang or project_for_tags.lang == site.default_lang -%}
-  {%- if project_for_tags.tags -%}
-  {%- for tag in project_for_tags.tags -%}
-  {%- assign all_tags = all_tags | push: tag | uniq -%}
-  {%- endfor -%}
-  {%- endif -%}
-  {%- endif -%}
+    {%- if project_for_tags.lang == site.active_lang or project_for_tags.lang == site.default_lang -%}
+      {%- if project_for_tags.tags -%}
+        {%- for tag in project_for_tags.tags -%}
+          {%- assign all_tags = all_tags | push: tag | uniq -%}
+        {%- endfor -%}
+      {%- endif -%}
+    {%- endif -%}
   {%- endfor -%}
   {%- assign sorted_tags = all_tags | sort_natural -%}
-
+  
   {% if sorted_tags.size > 0 %}
   <section class="sidebar-section sidebar-tags">
     <h3 class="sidebar-section-title">{{ t.sidebar_tags_title | default: "Tags" }}</h3>
@@ -39,28 +49,29 @@
   </section>
   <hr class="sidebar-delimiter">
   {% endif %}
-
+  
   <section class="sidebar-section sidebar-popular-projects">
     <h3 class="sidebar-section-title">{{ t.sidebar_popular_title | default: "Recent Projects" }}</h3>
-    {%- assign sidebar_projects_lang_specific = site.projects | where: "lang", site.active_lang | sort: "date" | reverse
-    -%}
+    
+    {%- assign sidebar_projects_lang_specific = site.projects | where: "lang", site.active_lang | sort: "date" | reverse -%}
     {%- assign sidebar_projects_to_display = sidebar_projects_lang_specific -%}
-
+  
     {%- if sidebar_projects_lang_specific.size == 0 and site.active_lang != site.default_lang -%}
-    {%- assign sidebar_projects_default_lang = site.projects | where: "lang", site.default_lang | sort: "date" | reverse
-    -%}
-    {%- assign sidebar_projects_to_display = sidebar_projects_default_lang -%}
-    {%- if sidebar_projects_default_lang.size > 0 -%}
-    <p class="text-muted small">({{ t.showing_default_lang_projects | default: "Showing projects in default language."
-      }})</p>
+      {%- assign sidebar_projects_default_lang = site.projects | where: "lang", site.default_lang | sort: "date" | reverse -%}
+      {%- assign sidebar_projects_to_display = sidebar_projects_default_lang -%}
+      {%- if sidebar_projects_default_lang.size > 0 -%}
+        <p class="text-muted small">({{ t.showing_default_lang_projects | default: "Showing projects in default language." }})</p>
+      {%- endif -%}
     {%- endif -%}
-    {%- endif -%}
-
+  
     {% for project_item_sidebar in sidebar_projects_to_display limit:2 %}
-    {% include sidebar_project_card.html project=project_item_sidebar %}
+      {% include sidebar_project_card.html project=project_item_sidebar %}
     {% else %}
-    <p>{{t.no_projects_sidebar | default: "No recent projects to show."}}</p>
+      <p>{{ t.no_projects_sidebar | default: "No recent projects to show." }}</p>
     {% endfor %}
   </section>
+  
+  <!-- La etiqueta <hr> de abajo la moví aquí para que esté dentro del aside -->
   <hr class="sidebar-delimiter">
+
 </aside>
