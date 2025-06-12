@@ -1,6 +1,6 @@
 site_title: "Grimán DevWorks" 
 lang_name: "Español"
-homepage_title: "Página de Inicio ES"
+homepage_title: "Proyectos"
 sidebar_title: "Barra Lateral"
 
 navbar_home: "Inicio"
@@ -13,8 +13,8 @@ go_to_es: "Español"
 go_to_en: "English"
 
 # ... existing strings ...
-project_card_title_placeholder: "Título del Proyecto"
-project_card_description_placeholder: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum." # Placeholder, translate as needed
+# project_card_title_placeholder: "Título del Proyecto"
+# project_card_description_placeholder: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum." # Placeholder, translate as needed
 # Spanish translations for project page template
 project_published_on: "Publicado el"
 project_tech_stack_heading: "Tecnologías:"

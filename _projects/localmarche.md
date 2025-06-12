@@ -7,6 +7,7 @@ short_description: "LocalMarché's e-commerce platform revolutionized inventory 
 card_image_path: "https://ik.imagekit.io/rkdscdtap/projects/localmarche1.png?updatedAt=1748971540642"
 image_path: "https://ik.imagekit.io/rkdscdtap/projects/localmarche2.png?updatedAt=1748970262975"
 image_path_alt: "https://ik.imagekit.io/rkdscdtap/projects/localmarche3.png?updatedAt=1748970491579"
+image: "https://ik.imagekit.io/rkdscdtap/projects/localmarche3.png?updatedAt=1748970491579"
 video_url: "https://youtu.be/ERBZGA6T1jQ"
 date: 2025-06-03
 tech_stack: ["Wix", "JavaScript", "Ruby"]

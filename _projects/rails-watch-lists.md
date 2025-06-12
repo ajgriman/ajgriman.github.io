@@ -7,6 +7,7 @@ short_description: "Movie curation platform featuring CRUD list management, Tom 
 card_image_path: "https://ik.imagekit.io/rkdscdtap/projects/rails-watch-list1.gif?updatedAt=1749384953788"
 image_path: "https://ik.imagekit.io/rkdscdtap/projects/rails-watch-list2.png?updatedAt=1749384855468"
 image_path_alt: "https://ik.imagekit.io/rkdscdtap/projects/rails-watch-list3.png?updatedAt=1749384880152"
+image: "https://ik.imagekit.io/rkdscdtap/projects/rails-watch-list3.png?updatedAt=1749384880152"
 video_url: "https://youtu.be/A84wPcYgAK8"
 date: 2025-06-08
 tech_stack: ["Ruby On Rails", "Ruby", "JavaScript", "Bootstrap", "PostgreSQL"]

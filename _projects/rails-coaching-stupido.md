@@ -7,6 +7,7 @@ short_description: "Stupid Coaching convirtió interacciones de Ruby en terminal
 card_image_path: "https://ik.imagekit.io/rkdscdtap/projects/rails-stupid-coaching1.png?updatedAt=1748944300179"
 image_path: "https://ik.imagekit.io/rkdscdtap/projects/rails-stupid-coaching2.png?updatedAt=1748944465886"
 image_path_alt: "https://ik.imagekit.io/rkdscdtap/projects/rails-stupid-coaching3.png?updatedAt=1748944758805"
+image: "https://ik.imagekit.io/rkdscdtap/projects/rails-stupid-coaching3.png?updatedAt=1748944758805"
 video_url: "https://ik.imagekit.io/rkdscdtap/projects/rails-stupid-coaching.mp4?updatedAt=1748945047088"
 date: 2025-06-03
 tech_stack: ["Ruby","Ruby On Rails", "Bootstrap", "HTML", "Git"]

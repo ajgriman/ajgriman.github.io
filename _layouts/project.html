@@ -56,9 +56,9 @@ layout: default # Assumes your main layout provides header, footer, and Bootstra
                     {{ content }}
                 </section>
 
-                {% if page.image_path_alt %}
+                {% if page.image %}
                 <figure class="project-alt-image my-4">
-                    <img src="{{ page.image_path_alt | relative_url }}" alt="{{ page.title }} alternative image"
+                    <img src="{{ page.image | relative_url }}" alt="{{ page.title }} image"
                         class="img-fluid rounded shadow-sm">
                 </figure>
                 {% endif %}

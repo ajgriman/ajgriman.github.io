@@ -2,6 +2,7 @@
 layout: default
 lang: en 
 page_id: homepage
+image: "img/imageexample.png"
 title: "Projects" 
 # permalink: /
 ---

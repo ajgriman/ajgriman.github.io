@@ -7,6 +7,7 @@ short_description: "Este juego de palabras en Rails transforma rejillas de letra
 card_image_path: "https://ik.imagekit.io/rkdscdtap/projects/rails-longest-word-game1.png?updatedAt=1748955639638"
 image_path: "https://ik.imagekit.io/rkdscdtap/projects/rails-longest-word2.png?updatedAt=1748956151228"
 image_path_alt: "https://ik.imagekit.io/rkdscdtap/projects/rails-longest-word3.png?updatedAt=1748956113489"
+image: "https://ik.imagekit.io/rkdscdtap/projects/rails-longest-word3.png?updatedAt=1748956113489"
 video_url: "https://ik.imagekit.io/rkdscdtap/projects/rails-longest-word-game.mp4?updatedAt=1748955223374"
 date: 2025-06-03
 tech_stack: ["Ruby", "Ruby On Rails", "Bootstrap", "HTML", "Git"]
