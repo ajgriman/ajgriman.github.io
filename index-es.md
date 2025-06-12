@@ -2,8 +2,8 @@
 layout: default
 lang: es
 page_id: homepage
-title: "Página de Inicio ES" # Or your preferred Spanish title for browser tab
-# permalink: / # REMOVE this line for non-default language homepages using subdirectories
+title: "Projectos" 
+permalink: /
 ---
 {%- assign t = site.data.locales[site.active_lang] -%}
 

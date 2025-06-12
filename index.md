@@ -1,8 +1,9 @@
 ---
 layout: default
-lang: en # Or the appropriate lang for your default index
-page_id: homepage # Or your chosen page_id for the homepage
-title: "Homepage EN" # Or your site title
+lang: en 
+page_id: homepage
+title: "Projects" 
+# permalink: /
 ---
 {%- assign t = site.data.locales[site.active_lang] -%}
 

@@ -60,38 +60,8 @@ And that site.active_lang is set by jekyll-polyglot (e.g., "en", "es")
                     {%- endif -%}
                     {%- endif -%}
 
-                    {%- comment %} Attempt 2: Fallback to site.translations if permalink_lang didn't yield a URL (older
-                    method) {% endcomment %}
-                    {%- unless target_url -%}
-                    {%- if site.translations and page.page_id and site.translations[page.page_id] and
-                    site.translations[page.page_id][lang_code] -%}
-                    {%- assign translated_page_obj = site.translations[page.page_id][lang_code] -%}
-                    {%- if translated_page_obj.url -%}
-                    {%- assign target_url = translated_page_obj.url | relative_url -%}
-                    {%- endif -%}
-                    {%- endif -%}
-                    {%- endunless -%}
-
-                    {%- comment %} Attempt 3: Absolute fallback to the homepage of the target language if no specific
-                    page translation found {% endcomment %}
-                    {%- unless target_url -%}
-                    {%- assign home_page_id_for_fallback = "home_page" -%}
-                    {%- if site.translations and site.translations[home_page_id_for_fallback] and
-                    site.translations[home_page_id_for_fallback][lang_code] -%}
-                    {%- assign fallback_home_obj = site.translations[home_page_id_for_fallback][lang_code] -%}
-                    {%- if fallback_home_obj.url -%}
-                    {%- assign target_url = fallback_home_obj.url | relative_url -%}
-                    {%- endif -%}
-                    {%- elsif lang_code == site.default_lang -%}
-                    {%- assign target_url = "/" | relative_url -%}
-                    {%- else -%}
-                    {%- assign target_url = lang_code | prepend: '/' | append: '/' | replace_first: '//', '/' |
-                    relative_url -%}
-                    {%- endif -%}
-                    {%- endunless -%}
-
                     {%- if target_url -%}
-                    <a class="nav-link" href="{{ target_url }}">
+                    <a class="nav-link" {% static_href %}href="{{ target_url }}"{% endstatic_href %}>
                         {{ site.data.locales[lang_code].lang_name | default: lang_code | upcase }}
                     </a>
                     {%- else -%}
