@@ -3,13 +3,22 @@ layout: about
 lang: en
 rel-lang-group: about
 page_id: about_page
-title: "About Me"
-short_description: "A reinvented Full-Stack Developer. My 25-year foundation in systems and hardware is the bedrock of my new career in software development"
-image_path: "https://ik.imagekit.io/rkdscdtap/projects/rails-watch-list2.png?updatedAt=1749384855468"
-image_path_alt: "https://ik.imagekit.io/rkdscdtap/projects/rails-watch-list3.png?updatedAt=1749384880152"
-tech_stack: ["Ruby On Rails", "Ruby", "JavaScript", "Bootstrap", "PostgreSQL", "React", "SCSS"]
-repo_url: "https://github.com/ajgriman"
-linkedin_url: "https://www.linkedin.com/in/grimandevworks/"
+title: 'About Me'
+short_description: 'A reinvented Full-Stack Developer. My 25-year foundation in systems and hardware is the bedrock of my new career in software development'
+image_path: 'https://ik.imagekit.io/rkdscdtap/projects/rails-watch-list2.png?updatedAt=1749384855468'
+image_path_alt: 'https://ik.imagekit.io/rkdscdtap/projects/rails-watch-list3.png?updatedAt=1749384880152'
+tech_stack:
+  [
+    'Ruby On Rails',
+    'Ruby',
+    'JavaScript',
+    'Bootstrap',
+    'PostgreSQL',
+    'React',
+    'SCSS',
+  ]
+repo_url: 'https://github.com/ajgriman'
+linkedin_url: 'https://www.linkedin.com/in/grimandevworks/'
 permalink: /en/about/
 ---
 
@@ -17,7 +26,7 @@ From Google's early days to the AI era. My story began when I received an exclus
 
 ## Discovering Linux
 
-My brother decided to open a cybercafé and I actively participated in installing computers, networks, and servers. That's where a technician told me about Linux: *"A Linux server can run for years without breaking down or slowing down."* Those words sparked my curiosity and determination.
+My brother decided to open a cybercafé and I actively participated in installing computers, networks, and servers. That's where a technician told me about Linux: _"A Linux server can run for years without breaking down or slowing down."_ Those words sparked my curiosity and determination.
 
 I chose Red Hat Linux as my first distribution, though SUSE always attracted me. I dove in completely: configuring servers, firewalls, gaming networks, and specialized applications. Over time, Linux became my main system, evolving toward Debian and its derivatives.
 

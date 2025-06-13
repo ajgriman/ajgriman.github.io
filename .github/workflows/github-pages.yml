@@ -1,24 +1,18 @@
-# .github/workflows/github-pages.yml
-
 name: Build and Deploy Jekyll site to GitHub Pages
 
 on:
-  # Se ejecuta en pushes al branch `main`
   push:
-    branches: ["main"]
+    branches: ['main']
 
-  # Permite ejecutar este workflow manualmente desde la pestaña Actions
   workflow_dispatch:
 
-# Otorga los permisos necesarios al job para desplegar en GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Permite un solo despliegue concurrente, cancelando los anteriores
 concurrency:
-  group: "pages"
+  group: 'pages'
   cancel-in-progress: true
 
 jobs:
@@ -31,19 +25,18 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2' # La versión que usa GitHub Pages, para consistencia
-          bundler-cache: true # Acelera el proceso instalando gemas desde un caché
+          ruby-version: '3.2'
+          bundler-cache: true
           cache-version: 0
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
       - name: Build with Jekyll
-        # Usa el baseurl que configure-pages determina automáticamente
+
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
 
-  # Job de despliegue
   deploy:
     environment:
       name: github-pages

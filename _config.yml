@@ -1,43 +1,38 @@
-
-title: "Grimán DevWorks"
+title: 'Grimán DevWorks'
 email:
-email_user: "griman"
-email_domain: "gmail.com"
-description: "Griman DevWorks | Projects | About"
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://ajgriman.github.io"
-# url:
-# twitter_username: jekyllrb
-github_username:  ajgriman
+email_user: 'griman'
+email_domain: 'gmail.com'
+description: 'Griman DevWorks | Projects | About'
+baseurl: ''
+url: 'https://ajgriman.github.io'
+github_username: ajgriman
 
-# Build settings
 theme: null
 plugins:
   - jekyll-feed
   - jekyll-polyglot
   - jekyll-seo-tag
 
-languages: ["en", "es"]
-default_lang: "en"
-exclude_from_localization: ["assets/", "scripts/"] # Add "admin/" if you have it
+languages: ['en', 'es']
+default_lang: 'en'
+exclude_from_localization: ['assets/', 'scripts/'] # Add "admin/" if you have it
 
 polyglot:
-  default_lang_in_url: false 
-  parallel_localization: false 
-  # relative_permalinks: false
+  default_lang_in_url: false
+  parallel_localization: false
   pages_mode: filename
 collections:
   projects:
     output: true
-    permalink: /projects/:title/ 
-  tech_icons: 
-    output: false 
+    permalink: /projects/:title/
+  tech_icons:
+    output: false
 defaults:
   - scope:
-      path: "about.md"
+      path: 'about.md'
     values:
-      layout: "about"
+      layout: 'about'
   - scope:
-      path: "about_es.md"
+      path: 'about_es.md'
     values:
-      layout: "about"
+      layout: 'about'

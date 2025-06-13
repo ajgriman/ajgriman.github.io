@@ -1,12 +1,18 @@
 {%- assign t = site.data.locales[site.active_lang] -%}
 <div class="custom-project-card">
-    <h3 class="custom-project-card__title">{{ include.project_title | default: t.project_card_title_placeholder }}</h3>
-    <div class="custom-project-card__image-container">
-        <img src="{{ include.project_image_url | default: 'https://via.placeholder.com/400x300.png?text=Project+Image' }}"
-            alt="{{ include.project_title | default: t.project_card_title_placeholder }}"
-            class="custom-project-card__image">
-    </div>
-    <p class="custom-project-card__description">{{ include.project_description | default:
-        t.project_card_description_placeholder }}</p>
-    <div class="custom-project-card__delimiter"></div>
+  <h3 class="custom-project-card__title">
+    {{ include.project_title | default: t.project_card_title_placeholder }}
+  </h3>
+  <div class="custom-project-card__image-container">
+    <img
+      src="{{ include.project_image_url | default: 'https://via.placeholder.com/400x300.png?text=Project+Image' }}"
+      alt="{{ include.project_title | default: t.project_card_title_placeholder }}"
+      class="custom-project-card__image"
+    />
+  </div>
+  <p class="custom-project-card__description">
+    {{ include.project_description | default:
+    t.project_card_description_placeholder }}
+  </p>
+  <div class="custom-project-card__delimiter"></div>
 </div>

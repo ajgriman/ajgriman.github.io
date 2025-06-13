@@ -1,54 +1,41 @@
-site_title: "Grimán DevWorks"
-lang_name: "English"
-homepage_title: "Projects"
-sidebar_title: "Sidebar"
+site_title: 'Grimán DevWorks'
+lang_name: 'English'
+homepage_title: 'Projects'
+sidebar_title: 'Sidebar'
 
+navbar_home: 'Home'
+navbar_projects: 'Projects'
+navbar_about: 'About'
+go_to_es: 'Español'
+go_to_en: 'English'
 
-navbar_home: "Home"
-navbar_projects: "Projects"
-navbar_about: "About"
-# navbar_more: "More"
-# navbar_action: "Action"
-# navbar_another_action: "Another Action"
-go_to_es: "Español"
-go_to_en: "English"
+project_published_on: 'Published on'
+project_tech_stack_heading: 'Tech:'
+project_reading_time_minute: 'min read'
+project_reading_time_minutes: 'min read'
+project_watch_video: 'Watch Video'
+project_view_repo: 'GitHub Repo'
+project_view_live: 'Live'
 
-# ... existing strings ...
-# project_card_title_placeholder: "Project Title"
-# project_card_description_placeholder: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum."
-# English translations for project page template
-project_published_on: "Published on"
-project_tech_stack_heading: "Tech:"
-project_reading_time_minute: "min read"
-project_reading_time_minutes: "min read"
-project_watch_video: "Watch Video"
-# ... other keys ...
-project_view_repo: "GitHub Repo" 
-project_view_live: "Live"         
+card_this_year: 'This year'
+card_years_ago: 'years ago'
+card_secondary_title_placeholder: 'Exploring the Impact' # Example
+card_year_ago: 'year ago'
 
-# ... other keys ...
-card_this_year: "This year"
-card_years_ago: "years ago"
-card_secondary_title_placeholder: "Exploring the Impact" # Example
-# ... other keys ...
-card_year_ago: "year ago" # Singular
-# ... existing keys ...
-sidebar_about_title: "About"
-sidebar_about_content: "My name is Antonio J Grimán A. 🚀 I'm dedicated to building applications that make an impact, always on a quest to innovate and explore the boundaries between the functional and the extraordinary." # Example
-read_more: "Read more"
-sidebar_tags_title: "Tags"
-sidebar_popular_title: "Recent Projects"
-# showing_default_lang_projects: "Showing projects in default language." # Already added previously
-no_projects_sidebar: "No recent projects to show."
-about_github: "GitHub Profile"
-about_linkedin: "LinkedIn Profile"
+sidebar_about_title: 'About'
+sidebar_about_content: 'My name is Antonio J Grimán A. 🚀 Building applications, always on a quest to innovate and explore the boundaries between the functional and the extraordinary.' # Example
+read_more: 'Read more'
+sidebar_tags_title: 'Tags'
+sidebar_popular_title: 'Recent Projects'
+no_projects_sidebar: 'No recent projects to show.'
+sidebar_about_banner_text: 'Want to know my full story?'
+learn_more_btn: 'Learn my story'
+sidebar_back_to_home_text: 'Ready to see my work?'
+sidebar_back_to_home_btn: 'View Projects'
+
+about_github: 'GitHub Profile'
+about_linkedin: 'LinkedIn Profile'
 about_cta_title: "Let's Work Together"
-about_cta_text: "Ready to bring your ideas to life"
-about_contact_btn: "Get In Touch"
-about_page: "/en/about"
-# ... tus otras claves ...
-sidebar_about_banner_text: "Want to know my full story?"
-learn_more_btn: "Learn my story"
-# ... tus otras claves ...
-sidebar_back_to_home_text: "Ready to see my work?"
-sidebar_back_to_home_btn: "View Projects"
+about_cta_text: 'Ready to bring your ideas to life'
+about_contact_btn: 'Get In Touch'
+about_page: '/en/about'

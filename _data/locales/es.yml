@@ -1,52 +1,39 @@
-site_title: "Grimán DevWorks" 
-lang_name: "Español"
-homepage_title: "Proyectos"
-sidebar_title: "Barra Lateral"
+site_title: 'Grimán DevWorks'
+lang_name: 'Español'
+homepage_title: 'Proyectos'
+sidebar_title: 'Barra Lateral'
 
-navbar_home: "Inicio"
-navbar_projects: "Proyectos"
-navbar_about: "Acerca de"
-# navbar_more: "Más"
-# navbar_action: "Acción"
-# navbar_another_action: "Otra Acción"
-go_to_es: "Español"
-go_to_en: "English"
+navbar_home: 'Inicio'
+navbar_projects: 'Proyectos'
+navbar_about: 'Acerca de'
+go_to_es: 'Español'
+go_to_en: 'English'
 
-# ... existing strings ...
-# project_card_title_placeholder: "Título del Proyecto"
-# project_card_description_placeholder: "Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum." # Placeholder, translate as needed
-# Spanish translations for project page template
-project_published_on: "Publicado el"
-project_tech_stack_heading: "Tecnologías:"
-project_reading_time_minute: "min de lectura"
-# **1. EXPLANATION & CONTENT FOR `_data/locales/` FILES**
-# ... other keys ...
-project_view_repo: "GitHub Repo"
-project_view_live: "Sitio en Vivo"      
+project_published_on: 'Publicado el'
+project_tech_stack_heading: 'Tecnologías:'
+project_reading_time_minute: 'min de lectura'
+project_view_repo: 'GitHub Repo'
+project_view_live: 'Sitio en Vivo'
 
-# ... other keys ...
-card_this_year: "Este año"
-card_years_ago: "años atrás" # or "hace años"
-card_secondary_title_placeholder: "Explorando el Impacto" # Example
-# ... other keys ...
-card_year_ago: "año atrás" # Singular (or "hace 1 año")
-# ... existing keys ...
-sidebar_about_title: "Acerca de"
-sidebar_about_content: "Mi nombre es Antonio J Grimán A. 🚀 Me dedico a crear aplicaciones que dejan huella, siempre en una búsqueda por innovar y explorar los límites entre lo funcional y lo extraordinario."
-read_more: "Leer más"
-sidebar_tags_title: "Etiquetas"
-sidebar_popular_title: "Proyectos Recientes"
-# showing_default_lang_projects: "Mostrando proyectos en el idioma predeterminado." # Already added previously
-no_projects_sidebar: "No hay proyectos recientes para mostrar."
-about_github: "Perfil de GitHub"
-about_linkedin: "Perfil de LinkedIn"
-about_cta_title: "Trabajemos Juntos"
-about_cta_text: "Listo para dar vida a tus ideas"
-about_contact_btn: "Contáctame"
-about_page: "/es/about"
-# ... tus otras claves ...
-sidebar_about_banner_text: "¿Quieres conocer mi historia completa?"
-learn_more_btn: "Conocer mi historia"
-# ... tus otras claves ...
-sidebar_back_to_home_text: "¿Listo para ver mis proyectos?"
-sidebar_back_to_home_btn: "Ver Proyectos"
+card_this_year: 'Este año'
+card_years_ago: 'años atrás'
+card_secondary_title_placeholder: 'Explorando el Impacto'
+card_year_ago: 'año atrás'
+
+sidebar_about_title: 'Acerca de'
+sidebar_about_content: 'Mi nombre es Antonio J Grimán A. 🚀 Creando aplicaciones, siempre en una búsqueda por innovar y explorar los límites entre lo funcional y lo extraordinario.'
+read_more: 'Leer más'
+sidebar_tags_title: 'Etiquetas'
+sidebar_popular_title: 'Proyectos Recientes'
+sidebar_about_banner_text: '¿Quieres conocer mi historia completa?'
+learn_more_btn: 'Conocer mi historia'
+sidebar_back_to_home_text: '¿Listo para ver mis proyectos?'
+sidebar_back_to_home_btn: 'Ver Proyectos'
+
+no_projects_sidebar: 'No hay proyectos recientes para mostrar.'
+about_github: 'Perfil de GitHub'
+about_linkedin: 'Perfil de LinkedIn'
+about_cta_title: 'Trabajemos Juntos'
+about_cta_text: 'Listo para dar vida a tus ideas'
+about_contact_btn: 'Contáctame'
+about_page: '/es/about'

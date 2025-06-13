@@ -1,29 +1,39 @@
-{%- assign p = include.project -%}
-{%- assign t = site.data.locales[site.active_lang] -%}
-
-{%- if p -%}
+{%- assign p = include.project -%} {%- assign t =
+site.data.locales[site.active_lang] -%} {%- if p -%}
 <article class="sidebar-project-card">
-    {%- if p.title -%}
-    <h4 class="sidebar-project-card__title">
-        <a href="{{ p.url | relative_url }}" class="sidebar-project-card__link">{{ p.title }}</a>
-    </h4>
-    {%- endif -%}
-
-    {%- if p.card_image_path -%}
-    <a href="{{ p.url | relative_url }}" class="sidebar-project-card__image-link" aria-hidden="true" tabindex="-1">
-        <div class="sidebar-project-card__image-container">
-            <img src="{{ p.card_image_path | relative_url }}" alt="" class="sidebar-project-card__image">
-        </div>
+  {%- if p.title -%}
+  <h4 class="sidebar-project-card__title">
+    <a href="{{ p.url | relative_url }}" class="sidebar-project-card__link">
+      {{ p.title }}
     </a>
-    {%- endif -%}
+  </h4>
+  {%- endif -%} {%- if p.card_image_path -%}
+  <a
+    href="{{ p.url | relative_url }}"
+    class="sidebar-project-card__image-link"
+    aria-hidden="true"
+    tabindex="-1"
+  >
+    <div class="sidebar-project-card__image-container">
+      <img
+        src="{{ p.card_image_path | relative_url }}"
+        alt=""
+        class="sidebar-project-card__image"
+      />
+    </div>
+  </a>
+  {%- endif -%}
 
-    <div class="sidebar-project-card__meta">
-        {%- assign project_year = p.date | date: "%Y" -%}
-        {%- assign current_year = "now" | date: "%Y" | plus: 0 -%}
-        {%- assign years_ago = current_year | minus: project_year -%}
-        {%- if years_ago < 0 -%}{%- assign years_ago=0 -%}{%- endif -%} {%- if years_ago==0 -%} {{ t.card_this_year |
-            default: "This year" }} {%- elsif years_ago==1 -%} 1 {{ t.card_year_ago | default: "year ago" }} {%- else
-            -%} {{ years_ago }} {{ t.card_years_ago | default: "years ago" }} {%- endif -%} {% if p.project_category %}
-            in {{ p.project_category }} {% elsif p.tech_stack.first %} in {{ p.tech_stack.first }} {% endif %} </div>
+  <div class="sidebar-project-card__meta">
+    {%- assign project_year = p.date | date: "%Y" -%} {%- assign current_year =
+    "now" | date: "%Y" | plus: 0 -%} {%- assign years_ago = current_year |
+    minus: project_year -%} {%- if years_ago < 0 -%}{%- assign years_ago=0
+    -%}{%- endif -%} {%- if years_ago==0 -%} {{ t.card_this_year | default:
+    "This year" }} {%- elsif years_ago==1 -%} 1 {{ t.card_year_ago | default:
+    "year ago" }} {%- else -%} {{ years_ago }} {{ t.card_years_ago | default:
+    "years ago" }} {%- endif -%} {% if p.project_category %} in {{
+    p.project_category }} {% elsif p.tech_stack.first %} in {{
+    p.tech_stack.first }} {% endif %}
+  </div>
 </article>
 {%- endif -%}

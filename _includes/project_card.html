@@ -1,55 +1,54 @@
-{%- assign p = include.project -%}
-{%- assign t = site.data.locales[site.active_lang] -%}
-
-{%- if p -%}
+{%- assign p = include.project -%} {%- assign t =
+site.data.locales[site.active_lang] -%} {%- if p -%}
 <a href="{{ p.url | relative_url }}" class="custom-project-card-link">
-    <div class="custom-project-card">
-        <h3 class="custom-project-card__title text-center">{{ p.title | default: t.project_card_title_placeholder }}</h3>
+  <div class="custom-project-card">
+    <h3 class="custom-project-card__title text-center">
+      {{ p.title | default: t.project_card_title_placeholder }}
+    </h3>
 
-        {%- if p.card_image_path -%}
-        <div class="custom-project-card__image-container">
-            <img src="{{ p.card_image_path | relative_url }}"
-                alt="{{ p.title | default: t.project_card_title_placeholder | escape }}"
-                class="custom-project-card__image">
-        </div>
-        {%- else -%}
-        <div class="custom-project-card__image-container">
-            <img src="https://via.placeholder.com/400x300.png?text={{ p.title | url_encode | default: 'Project' }}"
-                alt="{{ p.title | default: t.project_card_title_placeholder | escape }}"
-                class="custom-project-card__image">
-        </div>
-        {%- endif -%}
+    {%- if p.card_image_path -%}
+    <div class="custom-project-card__image-container">
+      <img
+        src="{{ p.card_image_path | relative_url }}"
+        alt="{{ p.title | default: t.project_card_title_placeholder | escape }}"
+        class="custom-project-card__image"
+      />
+    </div>
+    {%- else -%}
+    <div class="custom-project-card__image-container">
+      <img
+        src="https://via.placeholder.com/400x300.png?text={{ p.title | url_encode | default: 'Project' }}"
+        alt="{{ p.title | default: t.project_card_title_placeholder | escape }}"
+        class="custom-project-card__image"
+      />
+    </div>
+    {%- endif -%}
 
-        <div class="custom-project-card__text-content">
-            <!-- <p class="custom-project-card__description">
-                {{ p.short_description | default: t.project_card_description_placeholder | truncatewords: 20 }}
-            </p> -->
+    <div class="custom-project-card__text-content">
+      {%- if p.tech_stack and p.tech_stack.size > 0 -%}
+      <p class="custom-project-card__tech-stack">
+        {% for tech in p.tech_stack %} {{ tech }}{% unless forloop.last %}
+        <span class="tech-stack-separator">·</span>
+        {% endunless %} {% endfor %}
+      </p>
+      {%- endif -%}
 
-            {%- if p.tech_stack and p.tech_stack.size > 0 -%}
-            <p class="custom-project-card__tech-stack">
-                {% for tech in p.tech_stack %}
-                {{ tech }}{% unless forloop.last %} <span class="tech-stack-separator">·</span> {% endunless %}
-                {% endfor %}
-            </p>
-            {%- endif -%}
+      <div class="custom-project-card__metadata">
+        {%- assign project_year = p.date | date: "%Y" -%} {%- assign
+        current_year = "now" | date: "%Y" | plus: 0 -%} {%- assign years_ago =
+        current_year | minus: project_year -%} {%- if years_ago < 1 -%} {{
+        t.card_this_year | default: "This year" }} {%- else -%} {{ years_ago }}
+        {{ t.card_years_ago | default: "years ago" }} {%- endif -%}
+      </div>
+    </div>
 
-            <div class="custom-project-card__metadata">
-                {%- assign project_year = p.date | date: "%Y" -%}
-                {%- assign current_year = "now" | date: "%Y" | plus: 0 -%}
-                {%- assign years_ago = current_year | minus: project_year -%}
-                {%- if years_ago < 1 -%} {{ t.card_this_year | default: "This year" }} {%- else -%} {{ years_ago }} {{
-                    t.card_years_ago | default: "years ago" }} {%- endif -%}</div>
-
-                    <!-- <h4 class="custom-project-card__secondary-title">
-                        {{ t.card_secondary_title_placeholder | default: "Further Details" }}
-                    </h4> -->
-            </div>
-
-            <div class="custom-project-card__delimiter"></div>
-        </div>
+    <div class="custom-project-card__delimiter"></div>
+  </div>
 </a>
 {%- else -%}
 <div class="col-12">
-    <p class="text-danger">Error: No project data provided to card for include.</p>
+  <p class="text-danger">
+    Error: No project data provided to card for include.
+  </p>
 </div>
 {%- endif -%}

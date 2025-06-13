@@ -1,138 +1,147 @@
 ---
 layout: default
 ---
+
 <div class="container mt-4 mb-5">
-    <div class="row justify-content-center">
-        <div class="col-lg-10">
-            <article class="about-page-article">
-                <!-- Hero Section -->
-                <section class="about-hero mb-5">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6">
-                            <div class="about-hero-content">
-                                <h1 class="about-title display-4 fw-bold mb-3">{{ page.title }}</h1>
-                                {% if page.short_description %}
-                                <p class="about-subtitle fs-4 text-muted mb-4">{{ page.short_description }}</p>
-                                {% endif %}
-
-                                <!-- Social Links in Hero -->
-                                {% assign github_stripped = page.repo_url | strip %}
-                                {% assign linkedin_stripped = page.linkedin_url | strip %}
-                                {% if github_stripped != "" or linkedin_stripped != "" %}
-                                <div class="about-social-links d-flex gap-3 mb-4">
-                                    {% if github_stripped != "" %}
-                                    <a href="{{ page.repo_url }}" class="about-social-btn btn btn-outline-primary"
-                                        target="_blank" rel="noopener noreferrer">
-                                        <i class="fab fa-github me-2"></i>GitHub
-                                    </a>
-                                    {% endif %}
-                                    {% if linkedin_stripped != "" %}
-                                    <a href="{{ page.linkedin_url }}" class="about-social-btn btn btn-outline-primary"
-                                        target="_blank" rel="noopener noreferrer">
-                                        <i class="fab fa-linkedin me-2"></i>LinkedIn
-                                    </a>
-                                    {% endif %}
-                                </div>
-                                {% endif %}
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            {% if page.image_path %}
-                            <div class="about-hero-image">
-                                <img src="{{ page.image_path }}" alt="{{ page.title }} profile image"
-                                    class="img-fluid rounded-3 shadow">
-                            </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Story Content -->
-                <section class="about-story-content mb-5">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <div class="about-content-body">
-                                {{ content }}
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Secondary Image Section -->
-                {% if page.image_path_alt %}
-                <section class="about-image-showcase mb-5">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto text-center">
-                            <img src="{{ page.image_path_alt }}" alt="{{ page.title }} showcase image"
-                                class="img-fluid rounded-3 shadow-lg about-showcase-img">
-                        </div>
-                    </div>
-                </section>
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <article class="about-page-article">
+        <section class="about-hero mb-5">
+          <div class="row align-items-center">
+            <div class="col-lg-6">
+              <div class="about-hero-content">
+                <h1 class="about-title display-4 fw-bold mb-3">
+                  {{ page.title }}
+                </h1>
+                {% if page.short_description %}
+                <p class="about-subtitle fs-4 text-muted mb-4">
+                  {{ page.short_description }}
+                </p>
+                {% endif %} {% assign github_stripped = page.repo_url | strip %}
+                {% assign linkedin_stripped = page.linkedin_url | strip %} {% if
+                github_stripped != "" or linkedin_stripped != "" %}
+                <div class="about-social-links d-flex gap-3 mb-4">
+                  {% if github_stripped != "" %}
+                  <a
+                    href="{{ page.repo_url }}"
+                    class="about-social-btn btn btn-outline-primary"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="fab fa-github me-2"></i>
+                    GitHub
+                  </a>
+                  {% endif %} {% if linkedin_stripped != "" %}
+                  <a
+                    href="{{ page.linkedin_url }}"
+                    class="about-social-btn btn btn-outline-primary"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="fab fa-linkedin me-2"></i>
+                    LinkedIn
+                  </a>
+                  {% endif %}
+                </div>
                 {% endif %}
+              </div>
+            </div>
+            <div class="col-lg-6">
+              {% if page.image_path %}
+              <div class="about-hero-image">
+                <img
+                  src="{{ page.image_path }}"
+                  alt="{{ page.title }} profile image"
+                  class="img-fluid rounded-3 shadow"
+                />
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </section>
 
-                <!-- Tech Stack Section -->
-                {% if page.tech_stack and page.tech_stack.size > 0 %}
-                <section class="about-tech-section py-5">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <h3 class="about-section-title text-center mb-4">
-                                {{ site.data.locales[site.active_lang].about_tech_stack_heading | default: "My Tech
-                                Stack" }}
-                            </h3>
-                            <div class="about-tech-grid">
-                                {% for tech_name_raw in page.tech_stack %}
-                                {% assign tech_slug = tech_name_raw | downcase | replace: " ", "-" | replace: ".", "" |
-                                replace: "#", "sharp" %}
-                                {% assign icon = site.tech_icons | where: "slug", tech_slug | first %}
-                                <div class="about-tech-item">
-                                    {% if icon %}
-                                    <div class="about-tech-icon">
-                                        {{ icon.content }}
-                                    </div>
-                                    <span class="about-tech-label">{{ tech_name_raw }}</span>
-                                    {% else %}
-                                    <span class="about-tech-badge">{{ tech_name_raw }}</span>
-                                    {% endif %}
-                                </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                {% endif %}
+        <section class="about-story-content mb-5">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <div class="about-content-body">{{ content }}</div>
+            </div>
+          </div>
+        </section>
 
-                <!-- CTA Section -->
-                <section class="about-cta-section text-center py-5">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <div class="about-cta-card p-4 rounded-3">
-                                <h3 class="about-cta-title mb-3">
-                                    {{ site.data.locales[site.active_lang].about_cta_title | default: "Let's Work
-                                    Together" }}
-                                </h3>
-                                <p class="about-cta-text mb-4">
-                                    {{ site.data.locales[site.active_lang].about_cta_text | default: "Ready to bring
-                                    your ideas to life with cutting-edge technology and innovative solutions." }}
-                                </p>
-                                <a href="#" id="contact-link" class="about-cta-btn btn btn-primary btn-lg">
-                                    {{ site.data.locales[site.active_lang].about_contact_btn | default: "Get In Touch"
-                                    }}
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </article>
-        </div>
+        {% if page.image_path_alt %}
+        <section class="about-image-showcase mb-5">
+          <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+              <img
+                src="{{ page.image_path_alt }}"
+                alt="{{ page.title }} showcase image"
+                class="img-fluid rounded-3 shadow-lg about-showcase-img"
+              />
+            </div>
+          </div>
+        </section>
+        {% endif %} {% if page.tech_stack and page.tech_stack.size > 0 %}
+        <section class="about-tech-section py-5">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <h3 class="about-section-title text-center mb-4">
+                {{ site.data.locales[site.active_lang].about_tech_stack_heading
+                | default: "My Tech Stack" }}
+              </h3>
+              <div class="about-tech-grid">
+                {% for tech_name_raw in page.tech_stack %} {% assign tech_slug =
+                tech_name_raw | downcase | replace: " ", "-" | replace: ".", ""
+                | replace: "#", "sharp" %} {% assign icon = site.tech_icons |
+                where: "slug", tech_slug | first %}
+                <div class="about-tech-item">
+                  {% if icon %}
+                  <div class="about-tech-icon">{{ icon.content }}</div>
+                  <span class="about-tech-label">{{ tech_name_raw }}</span>
+                  {% else %}
+                  <span class="about-tech-badge">{{ tech_name_raw }}</span>
+                  {% endif %}
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </section>
+        {% endif %}
+
+        <section class="about-cta-section text-center py-5">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <div class="about-cta-card p-4 rounded-3">
+                <h3 class="about-cta-title mb-3">
+                  {{ site.data.locales[site.active_lang].about_cta_title |
+                  default: "Let's Work Together" }}
+                </h3>
+                <p class="about-cta-text mb-4">
+                  {{ site.data.locales[site.active_lang].about_cta_text |
+                  default: "Ready to bring your ideas to life with cutting-edge
+                  technology and innovative solutions." }}
+                </p>
+                <a
+                  href="#"
+                  id="contact-link"
+                  class="about-cta-btn btn btn-primary btn-lg"
+                >
+                  {{ site.data.locales[site.active_lang].about_contact_btn |
+                  default: "Get In Touch" }}
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </article>
     </div>
+  </div>
 </div>
 <script>
-  // Este script une las partes del email cuando el usuario hace clic
   const contactLink = document.getElementById('contact-link');
-  
-  // Obtenemos los valores desde Jekyll
-  const user = "{{ site.email_user }}";
-  const domain = "{{ site.email_domain }}";
+
+  const user = '{{ site.email_user }}';
+  const domain = '{{ site.email_domain }}';
 
   contactLink.addEventListener('click', function (e) {
     e.preventDefault(); // Evita que el enlace navegue a "#"

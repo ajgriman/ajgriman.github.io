@@ -1,11 +1,12 @@
 ---
 layout: default
-lang: en 
+lang: en
 page_id: homepage
-image: "img/imageexample.png"
-title: "Projects" 
+image: 'img/imageexample.png'
+title: 'Projects'
 # permalink: /
 ---
+
 {%- assign t = site.data.locales[site.active_lang] -%}
 
 <div class="container-fluid py-4">
@@ -34,24 +35,5 @@ title: "Projects"
         </div>
       {% endfor %}
     </div>
-</div>
 
-<script>
-  // Basic Masonry initialization (if you don't have it elsewhere)
-  // Ensure you have the Masonry JS library loaded
-  // window.onload = () => {
-  //   var grid = document.querySelector('#project-grid');
-  //   if (grid) {
-  //     var msnry = new Masonry( grid, {
-  //       itemSelector: '.project-grid-item',
-  //       columnWidth: '.project-grid-item', // or a sizer element/number
-  //       percentPosition: true,
-  //       gutter: 0 // or your gx-4 equivalent in pixels if needed
-  //     });
-  //   }
-  // }
-  // If using Bootstrap's own Masonry (new in BS5.3+), initialization might differ or be automatic.
-  // For older Bootstrap or standalone Masonry, the above is a basic example.
-  // Bootstrap 5.2+ has responsive cards and columns that might achieve a masonry-like effect without the JS library for simpler cases.
-  // If your original hardcoded grid worked without explicit JS Masonry init, then Bootstrap columns are doing the work.
-</script>
+</div>

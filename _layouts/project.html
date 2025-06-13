@@ -3,176 +3,189 @@ layout: default # Assumes your main layout provides header, footer, and Bootstra
 ---
 
 <div class="container mt-4 mb-5">
-    <div class="row justify-content-center">
-        <div class="col-lg-8">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <article class="project-page-article">
+        <header class="project-header mb-4 text-lg-start text-center">
+          <h1 class="project-title display-5 fw-bold mb-3">{{ page.title }}</h1>
+          {% if page.short_description %}
+          <p class="project-short-description fs-5 text-muted">
+            {{ page.short_description }}
+          </p>
+          {% endif %}
 
-            <article class="project-page-article">
-                <header class="project-header mb-4 text-lg-start text-center">
-                    <h1 class="project-title display-5 fw-bold mb-3">{{ page.title }}</h1>
-                    {% if page.short_description %}
-                    <p class="project-short-description fs-5 text-muted">{{ page.short_description }}</p>
-                    {% endif %}
+          <div class="project-meta text-muted small mt-3 mb-4">
+            <span class="project-date">
+              {{ site.data.locales[site.active_lang].project_published_on |
+              default: "Published on" }} {% if site.active_lang == 'es' %} {%
+              include localize_date_es.html date_obj=page.date %} {% else %} {{
+              page.date | date: "%B %-d, %Y" }} {% endif %}
+            </span>
+            {% if page.tech_stack and page.tech_stack.size > 0 %}
+            <span class="project-meta-divider mx-1 d-none d-md-inline">·</span>
+            <span class="project-tech-stack-meta d-none d-md-inline">
+              {% for tech in page.tech_stack limit: 2 %} {{ tech }}{% unless
+              forloop.last %}, {% endunless %} {% endfor %} {% if
+              page.tech_stack.size > 2 %} … {% endif %}
+            </span>
+            {% endif %} {%- assign words_in_content = content | number_of_words
+            -%} {%- assign words_per_minute_for_reading = 200 -%} {%- assign
+            calculated_reading_minutes = words_in_content | divided_by:
+            words_per_minute_for_reading -%}
+            <span class="project-meta-divider mx-1 d-none d-sm-inline">·</span>
+            <span class="reading-time d-none d-sm-inline">
+              {% if calculated_reading_minutes < 1 %}1{% else %}{{
+              calculated_reading_minutes }}{% endif %} {{
+              site.data.locales[site.active_lang].project_reading_time_minute |
+              default: "min read" }}
+            </span>
+          </div>
+        </header>
 
-                    <div class="project-meta text-muted small mt-3 mb-4">
-                        <span class="project-date">
-                            {{ site.data.locales[site.active_lang].project_published_on | default: "Published on" }}
-                            {% if site.active_lang == 'es' %}
-                            {% include localize_date_es.html date_obj=page.date %}
-                            {% else %}
-                            {{ page.date | date: "%B %-d, %Y" }}
-                            {% endif %}
-                        </span>
-                        {% if page.tech_stack and page.tech_stack.size > 0 %}
-                        <span class="project-meta-divider mx-1 d-none d-md-inline">·</span>
-                        <span class="project-tech-stack-meta d-none d-md-inline">
-                            {% for tech in page.tech_stack limit: 2 %}
-                            {{ tech }}{% unless forloop.last %}, {% endunless %}
-                            {% endfor %}
-                            {% if page.tech_stack.size > 2 %}
-                            …
-                            {% endif %}
-                        </span>
-                        {% endif %}
-                        {%- assign words_in_content = content | number_of_words -%}
-                        {%- assign words_per_minute_for_reading = 200 -%}
-                        {%- assign calculated_reading_minutes = words_in_content | divided_by:
-                        words_per_minute_for_reading -%}
-                        <span class="project-meta-divider mx-1 d-none d-sm-inline">·</span>
-                        <span class="reading-time d-none d-sm-inline">
-                            {% if calculated_reading_minutes < 1 %}1{% else %}{{ calculated_reading_minutes }}{% endif
-                                %} {{ site.data.locales[site.active_lang].project_reading_time_minute |
-                                default: "min read" }} </span>
-                    </div>
-                </header>
+        {% if page.image_path %}
+        <figure class="project-primary-image mb-4">
+          <img
+            src="{{ page.image_path | relative_url }}"
+            alt="{{ page.title }} primary image"
+            class="img-fluid rounded shadow-sm"
+          />
+        </figure>
+        {% endif %}
 
-                {% if page.image_path %}
-                <figure class="project-primary-image mb-4">
-                    <img src="{{ page.image_path | relative_url }}" alt="{{ page.title }} primary image"
-                        class="img-fluid rounded shadow-sm">
-                </figure>
-                {% endif %}
+        <section class="project-content-body fs-5 lh-lg">{{ content }}</section>
 
-                <section class="project-content-body fs-5 lh-lg">
-                    {{ content }}
-                </section>
-
-                {% if page.image %}
-                <figure class="project-alt-image my-4">
-                    <img src="{{ page.image | relative_url }}" alt="{{ page.title }} image"
-                        class="img-fluid rounded shadow-sm">
-                </figure>
-                {% endif %}
-
-                {% comment %} --- TECHNOLOGIES SECTION (Order: Below content, above video) --- {% endcomment %}
-                {% if page.tech_stack and page.tech_stack.size > 0 %}
-                <section class="project-tech-stack-full my-5 py-3">
-                    <h3 class="h5 mb-3 text-center text-lg-start">{{
-                        site.data.locales[site.active_lang].project_tech_stack_heading | default: "Technologies Used" }}
-                    </h3>
-                    <div
-                        class="d-flex flex-wrap justify-content-center justify-content-lg-start align-items-center tech-icons-container">
-                        {% for tech_name_raw in page.tech_stack %}
-                        {% assign tech_slug = tech_name_raw | downcase | replace: " ", "-" | replace: ".", "" | replace:
-                        "#", "sharp" %}
-                        {% assign icon = site.tech_icons | where: "slug", tech_slug | first %}
-                        <div class="tech-icon-item p-2 text-center">
-                            {% if icon %}
-                            <div class="tech-svg-icon">
-                                {{ icon.content }}
-                            </div>
-                            <span class="tech-icon-label small d-block mt-1">{{ tech_name_raw }}</span>
-                            {% else %}
-                            <span class="badge rounded-pill text-bg-light border me-1 mb-1 p-2">{{ tech_name_raw
-                                }}</span>
-                            {% endif %}
-                        </div>
-                        {% endfor %}
-                    </div>
-                </section>
-                {% endif %}
-                {% comment %} --- END TECHNOLOGIES SECTION --- {% endcomment %}
-
-                {% comment %} --- VIDEO EMBED SECTION --- {% endcomment %}
-                {% if page.video_url %}
-                <div class="project-video-embed my-5">
-                    {%- assign youtube_video_id = nil -%}
-                    {%- assign vimeo_id = nil -%}
-                    {%- assign imagekit_video_url = nil -%}
-
-                    {%- if page.video_url contains "youtube.com/watch?v=" -%}
-                    {%- assign youtube_video_id = page.video_url | split: "v=" | last | split: "&" | first -%}
-                    {%- elsif page.video_url contains "youtu.be/" -%}
-                    {%- assign youtube_video_id = page.video_url | split: "youtu.be/" | last | split: "?" | first -%}
-                    {%- elsif page.video_url contains "vimeo.com/" -%}
-                    {%- assign vimeo_id = page.video_url | split: "vimeo.com/" | last | split: "?" | first -%}
-                    {%- elsif page.video_url contains "imagekit.io/" and page.video_url contains ".mp4" or
-                    page.video_url contains ".webm" or page.video_url contains ".ogv" -%}
-                    {%- assign imagekit_path_segments = page.video_url | split: "imagekit.io/" | last -%}
-                    {%- assign imagekit_embed_src = "https://imagekit.io/player/embed/" | append: imagekit_path_segments
-                    -%}
-                    {%- assign imagekit_video_url = imagekit_embed_src -%}
-                    {%- endif -%}
-
-                    {%- if youtube_video_id -%}
-                    <div class="ratio ratio-16x9 shadow-sm rounded">
-                        <iframe src="https://www.youtube.com/embed/{{ youtube_video_id }}" title="YouTube video player"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen></iframe>
-                    </div>
-                    {%- elsif vimeo_id -%}
-                    <div class="ratio ratio-16x9 shadow-sm rounded">
-                        <iframe src="https://player.vimeo.com/video/{{ vimeo_id }}" title="Vimeo video player"
-                            frameborder="0" allow="autoplay; fullscreen; picture-in-picture; web-share"
-                            allowfullscreen></iframe>
-                    </div>
-                    {%- elsif imagekit_video_url -%}
-                    <div class="ratio ratio-16x9 shadow-sm rounded">
-                        <iframe src="{{ imagekit_video_url }}" title="ImageKit video player" frameBorder="0"
-                            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"></iframe>
-                    </div>
-                    {%- else -%}
-                    <p class="text-center">
-                        <a href="{{ page.video_url }}" target="_blank" rel="noopener noreferrer"
-                            class="btn btn-outline-secondary">
-                            <i class="fas fa-video"></i> {{ site.data.locales[site.active_lang].project_watch_video |
-                            default: "Watch Video" }}
-                        </a>
-                    </p>
-                    {%- endif -%}
-                </div>
-                {% endif %}
-                {% comment %} --- END VIDEO EMBED SECTION --- {% endcomment %}
-
-                {% comment %} --- BUTTON SECTION --- {% endcomment %}
-                {% assign repo_stripped = page.repo_url | strip %}
-                {% assign live_stripped = page.live_url | strip %}
-                {% if repo_stripped != "" or live_stripped != "" %}
-                <section class="project-links my-5">
-                    {% if live_stripped != "" %}
-                    <div class="d-grid gap-2 mb-3">
-                        <a href="{{ page.live_url }}" class="btn btn-outline-dark btn-lg" target="_blank"
-                            rel="noopener noreferrer">
-                            <i class="fas fa-external-link-alt me-2"></i>{{
-                            site.data.locales[site.active_lang].project_view_live | default: "Live Site" }}
-                        </a>
-                    </div>
-                    {% endif %}
-                    {% if repo_stripped != "" %}
-                    <div class="d-grid gap-2">
-                        <a href="{{ page.repo_url }}" class="btn btn-outline-dark btn-lg" target="_blank"
-                            rel="noopener noreferrer">
-                            <i class="fab fa-github me-2"></i>{{ site.data.locales[site.active_lang].project_view_repo |
-                            default: "GitHub Repository" }}
-                        </a>
-                    </div>
-                    {% endif %}
-                </section>
-                {% endif %}
-                {% comment %} --- END BUTTON SECTION --- {% endcomment %}
-
-            </article>
-
+        {% if page.image %}
+        <figure class="project-alt-image my-4">
+          <img
+            src="{{ page.image | relative_url }}"
+            alt="{{ page.title }} image"
+            class="img-fluid rounded shadow-sm"
+          />
+        </figure>
+        {% endif %} {% if page.tech_stack and page.tech_stack.size > 0 %}
+        <section class="project-tech-stack-full my-5 py-3">
+          <h3 class="h5 mb-3 text-center text-lg-start">
+            {{ site.data.locales[site.active_lang].project_tech_stack_heading |
+            default: "Technologies Used" }}
+          </h3>
+          <div
+            class="d-flex flex-wrap justify-content-center justify-content-lg-start align-items-center tech-icons-container"
+          >
+            {% for tech_name_raw in page.tech_stack %} {% assign tech_slug =
+            tech_name_raw | downcase | replace: " ", "-" | replace: ".", "" |
+            replace: "#", "sharp" %} {% assign icon = site.tech_icons | where:
+            "slug", tech_slug | first %}
+            <div class="tech-icon-item p-2 text-center">
+              {% if icon %}
+              <div class="tech-svg-icon">{{ icon.content }}</div>
+              <span class="tech-icon-label small d-block mt-1">
+                {{ tech_name_raw }}
+              </span>
+              {% else %}
+              <span
+                class="badge rounded-pill text-bg-light border me-1 mb-1 p-2"
+              >
+                {{ tech_name_raw }}
+              </span>
+              {% endif %}
+            </div>
+            {% endfor %}
+          </div>
+        </section>
+        {% endif %} {% if page.video_url %}
+        <div class="project-video-embed my-5">
+          {%- assign youtube_video_id = nil -%} {%- assign vimeo_id = nil -%}
+          {%- assign imagekit_video_url = nil -%} {%- if page.video_url contains
+          "youtube.com/watch?v=" -%} {%- assign youtube_video_id =
+          page.video_url | split: "v=" | last | split: "&" | first -%} {%- elsif
+          page.video_url contains "youtu.be/" -%} {%- assign youtube_video_id =
+          page.video_url | split: "youtu.be/" | last | split: "?" | first -%}
+          {%- elsif page.video_url contains "vimeo.com/" -%} {%- assign vimeo_id
+          = page.video_url | split: "vimeo.com/" | last | split: "?" | first -%}
+          {%- elsif page.video_url contains "imagekit.io/" and page.video_url
+          contains ".mp4" or page.video_url contains ".webm" or page.video_url
+          contains ".ogv" -%} {%- assign imagekit_path_segments = page.video_url
+          | split: "imagekit.io/" | last -%} {%- assign imagekit_embed_src =
+          "https://imagekit.io/player/embed/" | append: imagekit_path_segments
+          -%} {%- assign imagekit_video_url = imagekit_embed_src -%} {%- endif
+          -%} {%- if youtube_video_id -%}
+          <div class="ratio ratio-16x9 shadow-sm rounded">
+            <iframe
+              src="https://www.youtube.com/embed/{{ youtube_video_id }}"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+          {%- elsif vimeo_id -%}
+          <div class="ratio ratio-16x9 shadow-sm rounded">
+            <iframe
+              src="https://player.vimeo.com/video/{{ vimeo_id }}"
+              title="Vimeo video player"
+              frameborder="0"
+              allow="autoplay; fullscreen; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+          {%- elsif imagekit_video_url -%}
+          <div class="ratio ratio-16x9 shadow-sm rounded">
+            <iframe
+              src="{{ imagekit_video_url }}"
+              title="ImageKit video player"
+              frameborder="0"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+            ></iframe>
+          </div>
+          {%- else -%}
+          <p class="text-center">
+            <a
+              href="{{ page.video_url }}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-outline-secondary"
+            >
+              <i class="fas fa-video"></i>
+              {{ site.data.locales[site.active_lang].project_watch_video |
+              default: "Watch Video" }}
+            </a>
+          </p>
+          {%- endif -%}
         </div>
+        {% endif %} {% assign repo_stripped = page.repo_url | strip %} {% assign
+        live_stripped = page.live_url | strip %} {% if repo_stripped != "" or
+        live_stripped != "" %}
+        <section class="project-links my-5">
+          {% if live_stripped != "" %}
+          <div class="d-grid gap-2 mb-3">
+            <a
+              href="{{ page.live_url }}"
+              class="btn btn-outline-dark btn-lg"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="fas fa-external-link-alt me-2"></i>
+              {{ site.data.locales[site.active_lang].project_view_live |
+              default: "Live Site" }}
+            </a>
+          </div>
+          {% endif %} {% if repo_stripped != "" %}
+          <div class="d-grid gap-2">
+            <a
+              href="{{ page.repo_url }}"
+              class="btn btn-outline-dark btn-lg"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="fab fa-github me-2"></i>
+              {{ site.data.locales[site.active_lang].project_view_repo |
+              default: "GitHub Repository" }}
+            </a>
+          </div>
+          {% endif %}
+        </section>
+        {% endif %}
+      </article>
     </div>
+  </div>
 </div>

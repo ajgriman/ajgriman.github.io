@@ -2,19 +2,18 @@
 layout: default
 lang: es
 page_id: homepage
-title: "Projectos" 
+title: 'Projectos'
 permalink: /
 ---
+
 {%- assign t = site.data.locales[site.active_lang] -%}
 
 <div class="container-fluid py-4">
-    <!-- <h1 class="mb-4 text-center">{{ t.homepage_title | default: "Mis Proyectos" }}</h1> -->
-
-    <div class="row gx-4" id="project-grid"> {%- comment %} Consider unique ID if Masonry JS targets it {% endcomment %}
+    <div class="row gx-4" id="project-grid"> 
       {%- assign projects_to_display = site.projects | where: "lang", "es" -%}
 
       {%- if projects_to_display.size == 0 and site.active_lang != site.default_lang -%}
-        {%- comment %} Fallback: if no 'es' projects, try showing 'en' projects. Adjust if not desired. {%- endcomment -%}
+
         {%- assign projects_to_display = site.projects | where: "lang", site.default_lang -%}
         {%- if projects_to_display.size > 0 -%}
           <div class="col-12"><p class="text-center text-muted small">({{ t.showing_default_lang_projects | default: "Showing projects in default language as no specific translations were found for this section." }})</p></div>
@@ -31,20 +30,5 @@ permalink: /
         </div>
       {% endfor %}
     </div>
-</div>
 
-{%- comment %}
-<script>
-  // If you use Masonry JS and it targets ID, ensure '#project-grid-es' is used or make IDs consistent
-  // window.onload = () => {
-  //   var gridEs = document.querySelector('#project-grid-es');
-  //   if (gridEs) {
-  //     var msnryEs = new Masonry( gridEs, {
-  //       itemSelector: '.project-grid-item',
-  //       columnWidth: '.project-grid-item',
-  //       percentPosition: true
-  //     });
-  //   }
-  // }
-</script>
-{%- endcomment %}
+</div>
