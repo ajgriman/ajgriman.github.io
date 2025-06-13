@@ -15,7 +15,7 @@ repo_url: 'https://github.com/ajgriman/rails-crud'
 live_url: ''
 # tags: []
 ---
-{{page.image}} 
+
 Desarrollé un sistema simple de gestión de restaurantes en Rails con funcionalidad CRUD completa.
 
 La aplicación maneja todas las operaciones básicas (crear, ver, editar, eliminar restaurantes) con validaciones que requieren nombre, dirección y una calificación de 0-5, además de proveer retroalimentación al usuario mediante mensajes de éxito/error.

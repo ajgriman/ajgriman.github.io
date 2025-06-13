@@ -5,6 +5,7 @@ rel-lang-group: about
 page_id: about_page
 title: 'About Me'
 short_description: 'A reinvented Full-Stack Developer. My 25-year foundation in systems and hardware is the bedrock of my new career in software development'
+image: 'https://ik.imagekit.io/rkdscdtap/griman-devworks-en.png?updatedAt=1749826326105'
 image_path: 'https://ik.imagekit.io/rkdscdtap/projects/rails-watch-list2.png?updatedAt=1749384855468'
 image_path_alt: 'https://ik.imagekit.io/rkdscdtap/projects/rails-watch-list3.png?updatedAt=1749384880152'
 tech_stack:

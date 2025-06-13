@@ -4,6 +4,7 @@ lang: es
 page_id: homepage
 title: 'Projectos'
 permalink: /
+image: "https://ik.imagekit.io/rkdscdtap/griman-devworks-es.png?updatedAt=1749826309268"
 ---
 
 {%- assign t = site.data.locales[site.active_lang] -%}

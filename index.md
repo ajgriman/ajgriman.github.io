@@ -2,7 +2,7 @@
 layout: default
 lang: en
 page_id: homepage
-image: 'img/imageexample.png'
+image: 'https://ik.imagekit.io/rkdscdtap/griman-devworks-en.png?updatedAt=1749826326105'
 title: 'Projects'
 # permalink: /
 ---

@@ -7,6 +7,7 @@ title: 'Sobre mí'
 short_description: 'Desarrollador Full-Stack con una trayectoria reinventada. Mi base de 25 años en sistemas y hardware es el cimiento de mi nueva carrera en el desarrollo de software'
 image_path: 'https://ik.imagekit.io/rkdscdtap/projects/rails-watch-list2.png?updatedAt=1749384855468'
 image_path_alt: 'https://ik.imagekit.io/rkdscdtap/projects/rails-watch-list3.png?updatedAt=1749384880152'
+image: "https://ik.imagekit.io/rkdscdtap/griman-devworks-es.png?updatedAt=1749826309268"
 tech_stack:
   [
     'Ruby On Rails',
