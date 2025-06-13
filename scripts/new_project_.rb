@@ -27,7 +27,7 @@ abort("ABORTED: CARD Image Path cannot be empty.") if card_image_path.empty?
 print "Primary Detail Page Image Path (e.g., /assets/images/projects/project-detail.jpg): "
 image_path = STDIN.gets.chomp.strip
 
-print "Alternative Detail Page Image Path (optional, e.g., /assets/images/projects/project-alt.jpg): "
+print "Alternative Detail / SEO image (optional, e.g., /assets/images/projects/project-alt.jpg): "
 image_path_alt = STDIN.gets.chomp.strip
 
 print "Video URL (optional, e.g., https://youtube.com/watch?v=XXXXX): "
@@ -104,7 +104,8 @@ details_by_lang.each do |lang, details|
     "card_image_path: \"#{yaml_card_image_path}\"",
     "image_path: \"#{yaml_image_path}\"",
   ]
-  front_matter_lines << "image_path_alt: \"#{yaml_image_path_alt}\"" unless image_path_alt.empty?
+  front_matter_lines << "image_path_alt: &image_path_alt_value \"#{yaml_image_path_alt}\"" unless image_path_alt.empty?
+  front_matter_lines << "image: *image_path_alt_value"
   front_matter_lines << "video_url: \"#{yaml_video_url}\"" unless video_url.empty?
   front_matter_lines += [
     "date: #{project_date}",

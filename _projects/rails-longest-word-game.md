@@ -6,8 +6,8 @@ title: 'Rails Longest Word Game'
 short_description: 'This Rails-based word game transforms static letter grids into dynamic interactions. Built during my Le Wagon bootcamp.'
 card_image_path: 'https://ik.imagekit.io/rkdscdtap/projects/rails-longest-word-game1.png?updatedAt=1748955639638'
 image_path: 'https://ik.imagekit.io/rkdscdtap/projects/rails-longest-word2.png?updatedAt=1748956151228'
-image_path_alt: 'https://ik.imagekit.io/rkdscdtap/projects/rails-longest-word3.png?updatedAt=1748956113489'
-image: 'https://ik.imagekit.io/rkdscdtap/projects/rails-longest-word3.png?updatedAt=1748956113489'
+image_path_alt: &image_path_alt_value 'https://ik.imagekit.io/rkdscdtap/projects/rails-longest-word3.png?updatedAt=1748956113489'
+image: *image_path_alt_value
 video_url: 'https://ik.imagekit.io/rkdscdtap/projects/rails-longest-word-game.mp4?updatedAt=1748955223374'
 date: 2025-06-03
 tech_stack: ['Ruby', 'Ruby On Rails', 'Bootstrap', 'HTML', 'Git']
