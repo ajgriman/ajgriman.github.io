@@ -4,7 +4,7 @@ lang: es
 rel-lang-group: about
 page_id: about_page
 title: 'Sobre mí'
-short_description: 'Desarrollo full-stack con una tranquila humildad y visión audaz.'
+short_description: 'Mi nombre es Antonio Grimán. Y esta es la historia detrás del código.'
 image_path: 'https://ik.imagekit.io/rkdscdtap/projects/rails-watch-list2.png?updatedAt=1749384855468'
 image_path_alt: 'https://ik.imagekit.io/rkdscdtap/projects/rails-watch-list3.png?updatedAt=1749384880152'
 image: "https://ik.imagekit.io/rkdscdtap/griman-devworks-es.png?updatedAt=1749826309268"
