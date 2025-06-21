@@ -2,7 +2,7 @@
 layout: default
 lang: es
 page_id: homepage
-title: 'Projectos'
+title: 'Proyectos'
 permalink: /
 image: "https://ik.imagekit.io/rkdscdtap/griman-devworks-es.png?updatedAt=1749826309268"
 ---
@@ -11,8 +11,8 @@ image: "https://ik.imagekit.io/rkdscdtap/griman-devworks-es.png?updatedAt=174982
 
 <div class="container-fluid py-4">
     <div class="row gx-4" id="project-grid"> 
-      {%- assign projects_to_display = site.projects | where: "lang", "es" -%}
-
+      {%- assign projects_to_display = site.projects | where: "lang", "es" | sort: "date" | reverse -%}
+      
       {%- if projects_to_display.size == 0 and site.active_lang != site.default_lang -%}
 
         {%- assign projects_to_display = site.projects | where: "lang", site.default_lang -%}
