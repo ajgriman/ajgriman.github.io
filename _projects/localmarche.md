@@ -6,8 +6,8 @@ title: 'LocalMarché'
 short_description: "LocalMarché's e-commerce platform revolutionized inventory precision through Wix Stores integration."
 card_image_path: 'https://ik.imagekit.io/rkdscdtap/projects/localmarche1.png?updatedAt=1748971540642'
 image_path: 'https://ik.imagekit.io/rkdscdtap/projects/localmarche2.png?updatedAt=1748970262975'
-image_path_alt: 'https://ik.imagekit.io/rkdscdtap/projects/localmarche3.png?updatedAt=1748970491579'
-image: 'https://ik.imagekit.io/rkdscdtap/projects/localmarche3.png?updatedAt=1748970491579'
+image_path_alt: &image_path_alt_value 'https://ik.imagekit.io/rkdscdtap/projects/localmarche3.png?updatedAt=1748970491579'
+image: *image_path_alt_value
 video_url: 'https://youtu.be/ERBZGA6T1jQ'
 date: 2025-06-03
 tech_stack: ['Wix', 'JavaScript', 'Ruby']
