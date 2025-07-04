@@ -48,6 +48,7 @@
   <hr class="sidebar-delimiter" />
 
   <section class="sidebar-section sidebar-popular-projects">
+    <h5>{{ t.sidebar_popular_title }}</h5>
     {%- assign sidebar_projects_lang_specific = site.projects | where: "lang",
     site.active_lang | sort: "date" | reverse -%} {%- assign
     sidebar_projects_to_display = sidebar_projects_lang_specific -%} {%- if
