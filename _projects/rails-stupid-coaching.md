@@ -16,8 +16,8 @@ live_url: ''
 # tags: []
 ---
 
-The challenge? Build a humorous coaching app where users submit life questions and receive blunt, algorithm-driven advice via their browser—replacing CLI limitations with Rails’ full-stack capabilities.
+A coaching application was implemented in Ruby on Rails to provide a simple interactive experience. The project showcases the use of controllers, views, and models to handle user input and deliver automated feedback.
 
-I engineered a minimalist Rails MVC flow: a Bootstrap-styled form at `/ask` captures questions, while `/answer` processes inputs through response logic (e.g., "Great!" for work commitment, snarky replies for questions ending in "?"). Key integrations included Capybara system tests with Headless Chrome for automated UI validation and ERB templates for seamless question-answer rendering.
+The interface is designed with Bootstrap for responsiveness and clarity. The codebase adheres to Rails best practices, making it suitable for educational use or as a template for similar applications.
 
-Leveraging Ruby on Rails 7+, Bootstrap 5, and Selenium WebDriver, the app achieved <200ms response times and 100% test coverage. The project trained my RESTful routing expertise.
+This project exemplifies standard Rails development techniques and interactive web application design.

@@ -16,8 +16,8 @@ live_url: ''
 # tags: []
 ---
 
-Desarrollé un sistema simple de gestión de restaurantes en Rails con funcionalidad CRUD completa.
+Se desarrolló una aplicación CRUD (Crear, Leer, Actualizar, Eliminar) en Ruby on Rails para ilustrar patrones esenciales de aplicaciones web. El proyecto incluye una interfaz fácil de usar para gestionar registros, con validaciones integradas y rutas RESTful para facilitar el mantenimiento.
 
-La aplicación maneja todas las operaciones básicas (crear, ver, editar, eliminar restaurantes) con validaciones que requieren nombre, dirección y una calificación de 0-5, además de proveer retroalimentación al usuario mediante mensajes de éxito/error.
+La base del código se adhiere a las mejores prácticas de Rails, utilizando la arquitectura MVC, partials y helpers. Se utilizó Bootstrap para el diseño receptivo, y se eligió SQLite como base de datos para facilitar el desarrollo y las pruebas locales. El proyecto sirve como plantilla para aprender o extender aplicaciones Rails.
 
-Técnicamente, implementé rutas RESTful siguiendo el patrón MVC, compartí lógica de formularios entre vistas, y usé optimizaciones como before_action en el controlador para un código más limpio. El proyecto incluyó pruebas exhaustivas de validaciones del modelo y todos los flujos CRUD, ayudándome a practicar patrones esenciales de Rails, mejorar habilidades de testing y aplicar principios DRY - todo como parte de fortalecer mis fundamentos en Rails mediante este ejercicio educativo.
+Esta implementación está destinada para uso instructivo y como referencia de las técnicas estándar de desarrollo en Rails.

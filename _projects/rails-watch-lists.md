@@ -16,22 +16,22 @@ live_url: ''
 # tags: []
 ---
 
-Built a full-featured movie watchlist app enabling users to create/manage lists, bookmark films with personalized comments, and review collections. Key features include:
+A full-featured movie watchlist app was developed to enable users to create and manage lists, bookmark films with personalized comments, and review collections. Key features include:
 
 - Dynamic Lists: CRUD operations with image URLs (validated) and responsive card displays
 - Smart Bookmarking: Tom Select-powered searchable dropdowns for movie selection with comment validation (6+ chars)
-- Review Ecosystem: Star-rating.js integration for 1-5 ratings + text reviews displayed via custom SVG helpers
+- Review Ecosystem: Star-rating.js integration for 1-5 ratings plus text reviews displayed via custom SVG helpers
 
-Mastered Rails 7's JavaScript integration hurdles:
+Rails 7's JavaScript integration challenges were addressed as follows:
 
-- Importmap Challenges: Diagnosed UMD/IIFE vs. ES module conflicts in AOS.js/Star-Rating.js
-- Vendor Solutions: Modified library source (e.g., `this`→`window` bindings) to enable local ES module loading
-- Turbo Optimization: Initialized libraries on `turbo:load` with timeout fallbacks for DOM stability
-- Testing Rigor: Configured RSpec submodule for model validations (uniqueness, FK constraints) and movie deletion guards
+- Importmap Challenges: UMD/IIFE vs. ES module conflicts in AOS.js/Star-Rating.js were diagnosed
+- Vendor Solutions: Library source code (e.g., `this`→`window` bindings) was modified to enable local ES module loading
+- Turbo Optimization: Libraries were initialized on `turbo:load` with timeout fallbacks for DOM stability
+- Testing Rigor: RSpec submodule was configured for model validations (uniqueness, FK constraints) and movie deletion guards
 
-Delivered polished UX through:
+A polished UX was delivered through:
 
-- Animated UI: Typed.js titles + AOS.js scroll-triggered card reveals
-- Bootstrap 5 + Custom SCSS: Responsive banners with image fallbacks
+- Animated UI: Typed.js titles and AOS.js scroll-triggered card reveals
+- Bootstrap 5 and Custom SCSS: Responsive banners with image fallbacks
 - Database Integrity: PostgreSQL-backed movie seeding with `dependent: :restrict_with_error` safeguards
-- Debugging Wins: Resolved asset pathing (SVGs), CSS conflicts, and initialization race conditions
+- Debugging Wins: Asset pathing (SVGs), CSS conflicts, and initialization race conditions were resolved

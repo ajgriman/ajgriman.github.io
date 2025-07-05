@@ -15,8 +15,8 @@ live_url: "https://ajgriman.github.io/tic-tac-toe/"
 # tags: []
 ---
 
-This Tic Tac Toe game is an interactive exploration of React’s core functionalities. It uses functional components, hooks for state management, and conditional rendering to create a simple yet engaging experience.
+A classic Tic-Tac-Toe game was implemented using React to demonstrate component-based architecture and state management. The application allows two players to compete, with logic to detect wins and draws.
 
-The structure of the project highlights key practices—modularity with component reusability, effective state tracking, and a clear separation of concerns. Version control via Git and deployment on GitHub Pages further underscore contemporary web development techniques.
+The project features a responsive layout for optimal play on various devices. The codebase is organized for readability and maintainability, making it suitable for learning or as a foundation for more complex React projects.
 
-Dedicated to my beloved son, this project celebrates the art of thoughtful design and playful interaction. It invites viewers to appreciate the clean, dynamic implementation of timeless game logic.
+This implementation highlights best practices in React development, including the use of functional components and modular styling.

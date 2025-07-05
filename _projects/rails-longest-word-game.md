@@ -16,8 +16,8 @@ live_url: ''
 # tags: []
 ---
 
-The objective? Create an engaging experience where players form words from randomized 10-letter sets, validating submissions against grid constraints and a live dictionary API—replacing manual verification with automated logic.
+A word game was implemented in Ruby on Rails, where players attempt to create the longest possible word from a random selection of letters. The application checks word validity using a dictionary API and provides immediate feedback on the results.
 
-I architected a RESTful flow: the `GamesController` serves `/new` with procedurally generated letter grids, while `/score` processes submissions through triple-layer validation (grid compliance, English verification via API, scoring).
+The project utilizes Rails MVC architecture, integrates with external APIs, and employs Bootstrap for responsive design. The codebase is organized for maintainability and clarity, serving as a reference for similar educational or entertainment applications.
 
-Key innovations included Rails sessions for persistent score tracking without databases and Bootstrap integration for responsive card-based UI.
+This project demonstrates best practices in Rails development and interactive web application design.

@@ -16,8 +16,8 @@ live_url: 'https://www.localmarche.com.ve'
 # tags: []
 ---
 
-I engineered a Ruby script that transforms barcode-scanned data into Wix-compatible CSV formats, enabling granular weight-based product variations (e.g., 100g, 500g, 1kg versions of the same item). This automated workflow eliminated stock discrepancies while giving customers dynamic dropdown menus to select preferred packaging sizes.
+A Ruby script was developed to transform barcode scanner data into CSV formats compatible with Wix, enabling product variations by weight (e.g., 100g, 500g, 1kg versions of the same item). This automated workflow eliminated stock discrepancies and provided dropdown menus for selecting product presentations.
 
-To address Venezuela's dual-currency economy, I implemented JavaScript that fetches real-time USD/VES rates from exchangerate-api.com. Prices dynamically convert to Bolívares at point-of-view, with exchange rates updating daily. Mobile-first optimization ensured seamless shopping across devices, while Wix's native SEO tools boosted organic discoverability for local grocery searches.
+For the Venezuelan dual-currency economy, JavaScript was implemented to fetch real-time USD/VES rates from exchangerate-api.com. Prices are dynamically converted to Bolívares at the time of viewing, with daily updates. Mobile-first optimization ensured a smooth purchasing experience, while Wix's SEO tools improved visibility in local grocery searches.
 
-Navigating Wix's closed ecosystem demanded creative problem-solving: customized scripts bypassed platform limitations in inventory management, though front-end modifications were restricted to Wix's modules. This project deepened my expertise in SaaS workarounds and hybrid solutions (external APIs + proprietary platforms).
+Working within Wix's closed ecosystem required creative solutions: custom scripts overcame inventory management limitations, although front-end modifications were restricted to Wix modules. The project enhanced expertise in hybrid solutions (external APIs + proprietary platforms).

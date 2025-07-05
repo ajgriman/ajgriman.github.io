@@ -2,8 +2,8 @@
 layout: project
 lang: es
 page_id: rails-watch-lists
-title: 'Listas de Peliculas Rails'
-short_description: 'Plataforma de listas de películas con gestión CRUD, búsqueda Tom Select, comentarios en bookmarks, y reseñas con star-rating.js. Experiencia mejorada con animaciones Typed.js, efectos de scroll AOS.js, y tarjetas responsivas Bootstrap 5. Construido en el bootcamp de Le Wagon.'
+title: 'Listas de Películas Rails'
+short_description: 'Plataforma de listas de películas con gestión CRUD, búsqueda Tom Select, comentarios en bookmarks y reseñas con star-rating.js. Experiencia mejorada con animaciones Typed.js, efectos de scroll AOS.js y tarjetas responsivas Bootstrap 5. Construido en el bootcamp de Le Wagon.'
 card_image_path: 'https://ik.imagekit.io/rkdscdtap/projects/rails-watch-list1.gif?updatedAt=1749384953788'
 image_path: 'https://ik.imagekit.io/rkdscdtap/projects/rails-watch-list2.png?updatedAt=1749384855468'
 image_path_alt: &image_path_alt_value 'https://ik.imagekit.io/rkdscdtap/projects/rails-watch-list3.png?updatedAt=1749384880152'
@@ -16,22 +16,22 @@ live_url: ''
 # tags: []
 ---
 
-Desarrollé una app de listas de películas con creación/gestión de listas, bookmarking con comentarios, y reseñas. Funcionalidades clave:
+Se desarrolló una aplicación de listas de películas que permite crear y gestionar listas, marcar películas con comentarios personalizados y realizar reseñas. Las características clave incluyen:
 
-- Listas Dinámicas: Operaciones CRUD con URLs de imágenes (validadas) y tarjetas responsive
-- Bookmarking Inteligente: Búsquedas con Tom Select + validación de comentarios (6+ caracteres)
-- Ecosistema de Reseñas: Integración de star-rating.js para valoraciones 1-5 + reseñas con SVGs personalizados
+- Listas Dinámicas: Operaciones CRUD con URLs de imágenes (validadas) y tarjetas responsivas
+- Bookmarking Inteligente: Búsqueda con Tom Select y validación de comentarios (6+ caracteres)
+- Ecosistema de Reseñas: Integración de star-rating.js para valoraciones de 1 a 5 estrellas y reseñas de texto mostradas con SVGs personalizados
 
-Dominé retos de integración JS en Rails 7:
+Se abordaron los retos de integración de JavaScript en Rails 7 de la siguiente manera:
 
-- Problemas con Importmap: Diagnosticé conflictos UMD/IIFE vs. módulos ES en AOS.js/Star-Rating.js
-- Soluciones Locales: Modifiqué código fuente (ej: enlaces `this`→`window`) para carga local de módulos ES
-- Optimización Turbo: Inicialización en `turbo:load` con tiempos de espera para estabilidad DOM
-- Pruebas Rigurosas: Configuré submódulo RSpec para validaciones (unicidad, restricciones FK) y bloqueos de borrado
+- Problemas con Importmap: Se diagnosticaron conflictos UMD/IIFE vs. módulos ES en AOS.js/Star-Rating.js
+- Soluciones Locales: Se modificó el código fuente de las librerías (por ejemplo, enlaces `this`→`window`) para permitir la carga local de módulos ES
+- Optimización Turbo: Las librerías se inicializaron en `turbo:load` con tiempos de espera para la estabilidad del DOM
+- Pruebas Rigurosas: Se configuró un submódulo RSpec para validaciones de modelos (unicidad, restricciones FK) y bloqueos de borrado de películas
 
-Entregué UX pulido mediante:
+Se entregó una experiencia de usuario pulida mediante:
 
-- UI Animada: Títulos con Typed.js + revelado de tarjetas con AOS.js
-- Bootstrap 5 + SCSS: Banners responsive con imágenes de respaldo
+- UI Animada: Títulos con Typed.js y revelado de tarjetas con AOS.js
+- Bootstrap 5 y SCSS personalizado: Banners responsivos con imágenes de respaldo
 - Integridad de Datos: Semillas de películas en PostgreSQL con salvaguardas `dependent: :restrict_with_error`
-- Lecciones Clave: Resolución de rutas de assets (SVGs), conflictos CSS y condiciones de carrera en inicialización
+- Resolución de Problemas: Se resolvieron rutas de assets (SVGs), conflictos de CSS y condiciones de carrera en la inicialización

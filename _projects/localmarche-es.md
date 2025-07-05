@@ -16,8 +16,8 @@ live_url: 'https://www.localmarche.com.ve'
 # tags: []
 ---
 
-Desarrollé un script en Ruby que transforma datos de escáneres de código de barras a formatos CSV compatibles con Wix, permitiendo variaciones de productos por peso (ej: versiones de 100g, 500g, 1kg del mismo ítem). Este flujo automatizado eliminó discrepancias de stock y ofreció menús desplegables para seleccionar presentaciones.
+Se desarrolló un script en Ruby para transformar datos de escáneres de código de barras a formatos CSV compatibles con Wix, permitiendo variaciones de productos por peso (por ejemplo, versiones de 100g, 500g, 1kg del mismo ítem). Este flujo automatizado eliminó discrepancias de stock y ofreció menús desplegables para seleccionar presentaciones.
 
-Para la economía bimonetaria venezolana, implementé JavaScript que obtiene tasas USD/VES en tiempo real desde exchangerate-api.com. Los precios se convierten dinámicamente a Bolívares al momento de visualización, con actualizaciones diarias. La optimización mobile-first garantizó compras fluidas, mientras las herramientas SEO de Wix mejoraron la visibilidad en búsquedas locales de abastos.
+Para la economía bimonetaria venezolana, se implementó JavaScript que obtiene tasas USD/VES en tiempo real desde exchangerate-api.com. Los precios se convierten dinámicamente a Bolívares al momento de visualización, con actualizaciones diarias. La optimización mobile-first garantizó compras fluidas, mientras las herramientas SEO de Wix mejoraron la visibilidad en búsquedas locales de abastos.
 
-Trabajar en el ecosistema cerrado de Wix demandó soluciones creativas: scripts personalizados superaron limitaciones de gestión de inventario, aunque las modificaciones de front-end se restringieron a módulos de Wix. Este proyecto profundizó mi expertise en soluciones híbridas (APIs externas + plataformas propietarias).
+El trabajo en el ecosistema cerrado de Wix requirió soluciones creativas: scripts personalizados superaron limitaciones de gestión de inventario, aunque las modificaciones de front-end se restringieron a módulos de Wix. El proyecto profundizó la experiencia en soluciones híbridas (APIs externas + plataformas propietarias).

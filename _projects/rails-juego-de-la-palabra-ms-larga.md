@@ -16,8 +16,8 @@ live_url: ''
 # tags: []
 ---
 
-El objetivo: crear una experiencia donde jugadores formen palabras desde conjuntos aleatorios de 10 letras, validando intentos contra restricciones de la rejilla y una API de diccionario en vivo—reemplazando verificación manual con lógica automatizada.
+Se desarrolló un juego de palabras en Ruby on Rails, desafiando a los usuarios a formar la palabra más larga posible a partir de un conjunto aleatorio de letras. La aplicación valida las entradas contra una API de diccionario y proporciona retroalimentación sobre la validez y longitud de la palabra.
 
-Diseñé un flujo RESTful: `GamesController` sirve `/new` con rejillas generadas proceduralmente, mientras `/score` procesa intentos con validación triple (cumplimiento de rejilla, verificación de inglés vía API, puntuación).
+El proyecto demuestra el uso de controladores, vistas y modelos de Rails, así como la integración con API externas. El diseño receptivo se logró utilizando Bootstrap, asegurando la accesibilidad en todos los dispositivos. La estructura de la base de código es clara y mantenible, lo que la hace adecuada para fines educativos o como base para juegos similares.
 
-Innovaciones clave incluyeron sesiones de Rails para puntuación persistente sin bases de datos e integración de Bootstrap para IU responsive.
+Esta implementación destaca las mejores prácticas en el desarrollo de Rails y el diseño de aplicaciones web interactivas.

@@ -16,8 +16,8 @@ live_url: ''
 # tags: []
 ---
 
-El desafío: crear una app de coaching humorística donde usuarios enviaran preguntas y recibieran respuestas directas basadas en algoritmos, reemplazando las limitaciones de CLI con las capacidades full-stack de Rails.
+Se desarrolló una aplicación de coaching en Ruby on Rails para simular una simple interacción de preguntas y respuestas. El proyecto demuestra el uso de controladores, vistas y modelos para procesar la entrada del usuario y generar respuestas dinámicas.
 
-Desarrollé un flujo MVC minimalista en Rails: un formulario con Bootstrap en `/ask` captura preguntas, mientras `/answer` procesa entradas mediante lógica de respuestas (ej: "¡Genial!" por compromiso laboral, réplicas irónicas para preguntas con "?"). Integré pruebas Capybara con Headless Chrome para validación automatizada de UI y plantillas ERB para renderizar preguntas-respuestas.
+La aplicación cuenta con una interfaz limpia y receptiva utilizando Bootstrap, y sigue las convenciones de Rails para su mantenibilidad. La estructura de la base de código es clara, lo que la hace adecuada para fines instructivos o como punto de partida para proyectos más avanzados.
 
-Usando Ruby on Rails 7+, Bootstrap 5 y Selenium WebDriver, la app logró respuestas en <200ms y 100% de cobertura de pruebas. El proyecto entreno mi dominio de rutas RESTful.
+Esta implementación sirve como un ejemplo de los patrones básicos de aplicaciones Rails y diseño de interacción con el usuario.
