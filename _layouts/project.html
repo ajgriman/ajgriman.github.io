@@ -155,7 +155,7 @@ layout: default # Assumes your main layout provides header, footer, and Bootstra
         {% endif %} {% assign repo_stripped = page.repo_url | strip %} {% assign
         live_stripped = page.live_url | strip %} {% if repo_stripped != "" or
         live_stripped != "" %}
-        <section class="project-links my-5">
+        <div class="project-links my</div>-5">
           {% if live_stripped != "" %}
           <div class="d-grid gap-2 mb-3">
             <a
@@ -183,7 +183,7 @@ layout: default # Assumes your main layout provides header, footer, and Bootstra
             </a>
           </div>
           {% endif %}
-        </section>
+        </div>
         {% endif %}
       </article>
     </div>
