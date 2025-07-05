@@ -48,7 +48,7 @@ layout: default # Assumes your main layout provides header, footer, and Bootstra
             src="{{ page.image_path | relative_url }}"
             alt="{{ page.title }} primary image"
             class="img-fluid rounded shadow-sm"
-          />
+          >
         </figure>
         {% endif %}
 
@@ -113,7 +113,7 @@ layout: default # Assumes your main layout provides header, footer, and Bootstra
             <iframe
               src="https://www.youtube.com/embed/{{ youtube_video_id }}"
               title="YouTube video player"
-              frameborder="0"
+              class="border-0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen
             ></iframe>
@@ -123,7 +123,7 @@ layout: default # Assumes your main layout provides header, footer, and Bootstra
             <iframe
               src="https://player.vimeo.com/video/{{ vimeo_id }}"
               title="Vimeo video player"
-              frameborder="0"
+              class="border-0"
               allow="autoplay; fullscreen; picture-in-picture; web-share"
               allowfullscreen
             ></iframe>
@@ -133,7 +133,7 @@ layout: default # Assumes your main layout provides header, footer, and Bootstra
             <iframe
               src="{{ imagekit_video_url }}"
               title="ImageKit video player"
-              frameborder="0"
+              class="border-0"
               allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
             ></iframe>
           </div>
