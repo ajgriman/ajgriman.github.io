@@ -17,7 +17,7 @@ site.data.locales[site.active_lang] -%} {%- if p -%}
     <div class="sidebar-project-card__image-container">
       <img
         src="{{ p.card_image_path | relative_url }}"
-        alt=""
+        alt="{{ p.title | default: 'Project image' }}"
         class="sidebar-project-card__image"
       >
     </div>
